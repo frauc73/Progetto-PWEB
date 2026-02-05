@@ -16,7 +16,7 @@
         <link rel="stylesheet" href="../css/paginaStadio.css">
         <link rel="icon" href="./src/images/logo_sito.png" type="image/ico">
     </head>
-    <body>
+    <body data-nome-stadio = "<?php echo $nomeStadio?>">
         <header class="header_sito">
             <div class="high_left">
                 <a href="../index.php">
