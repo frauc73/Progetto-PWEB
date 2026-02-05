@@ -172,3 +172,8 @@ Da rivedere lo stile della pagina login e registrazione. Dai un'occhiata anche a
 						<button id="inserisci_evento">Inserisci</button>
 						<h2>Inserisci una recensione</h2>
 						<button id="inserisci_recensione">Inserisci</button>
+
+Per aggiornare la repository github :
+1. Aggiungi le modifiche: git add .
+2. Firma le modifiche: git commit -m "Descrivi qui le modifiche fatte (es. aggiunta pagina login)"
+3. Invia online: git push
