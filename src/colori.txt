@@ -179,3 +179,5 @@ Per aggiornare la repository github :
 3. Invia online: git push
 
 In realtà si può fare direttamente da visual studio
+
+Rifletti se strutturare i post su più pagine. (Mi puzza un po' come cosa, deve essere comunque un social)

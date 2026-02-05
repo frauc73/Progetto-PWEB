@@ -14,7 +14,10 @@
         <title>Diario del tifoso-Pagina Stadio</title>
         <link rel="stylesheet" href="../css/shared.css">
         <link rel="stylesheet" href="../css/paginaStadio.css">
-        <link rel="icon" href="./src/images/logo_sito.png" type="image/ico">
+        <link rel="stylesheet" href="../css/renderingPost.css">
+        <link rel="icon" href="../src/images/logo_sito.png" type="image/ico">
+        <script src="../js/renderingPost.js"></script>
+        <script src="../js/paginaStadio.js"></script>
     </head>
     <body data-nome-stadio = "<?php echo $nomeStadio?>">
         <header class="header_sito">
