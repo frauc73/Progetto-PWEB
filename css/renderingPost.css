@@ -1,0 +1,212 @@
+/*MODIFICHE DA VALUTARE*/
+/* Stile "Card" generale più pulito */
+article {
+    background-color: var(--bg-overlay);
+    border-radius: 12px; /* Riduciamo i 2rem, erano un po' troppo "giocattolosi" */
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255,255,255,0.5); /* Bordo sottile */
+    transition: transform 0.2s ease;
+}
+
+article:hover {
+    transform: translateY(-5px); /* Piccolo movimento quando passi sopra col mouse */
+}
+
+/* RENDERING EVENTO */
+
+/* Enfatizziamo il risultato come un tabellone */
+.griglia_partita {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Spazio tra squadre e risultato */
+    align-items: center;
+    background: linear-gradient(to bottom, #f9f9f9, #ececec);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+}
+
+.contenitore_squadra{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.nome_squadra {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    color: var(--text-main);
+}
+
+.punteggio p {
+    font-size: 2.5rem; /* Punteggio molto grande */
+    font-weight: 800;
+    color: var(--pitch-dark);
+    letter-spacing: 2px;
+    margin: 0;
+    background-color: #fff;
+    padding: 5px 20px;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+}
+
+/* Immagini più contenute */
+.logo_squadra {
+    height: 60px; /* Dimensione fissa per evitare salti */
+    width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.contenitore_foto_ricordo {
+    margin-top: 1rem;
+    width: 100%; /* La foto prende tutto lo spazio disponibile nel contenitore */
+    display: flex;
+    justify-content: center;
+}
+
+.foto_ricordo {
+    max-height: 400px;
+    width: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* RENDERING RECENSIONE */
+.contenitore_voti {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonne: Impianto, Logistica, Servizi */
+    gap: 15px;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+}
+
+.contenitore_voti h2 {
+    font-size: 1.1rem;
+    color: var(--pitch-dark);
+    border-bottom: 2px solid var(--pitch-medium);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.contenitore_voti h3 {
+    font-size: 0.9rem;
+    margin-bottom: 2px;
+    color: #666;
+}
+
+.icona_pallone {
+    width: 20px; /* Icone più piccole e ordinate */
+    height: 20px;
+    margin-right: 2px;
+}
+
+.contenitore_bottone_elimina{
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: end;
+}
+
+.bottone_elimina{
+    background-color: red;
+    border-color: red;
+}
+
+.bottone_elimina:hover{
+    background-color: #cc0000;;
+    border-color: #cc0000;
+}
+.bottone_elimina img{
+    height: 32px;
+}
+/*rendering recensione
+.contenitore_SD{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+.contenitore_voti{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+/*article{
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 2rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+/*rendering recensione
+.contenitore_SD{
+    display: flex;
+    width: 70%;
+    justify-content: space-around;
+}
+.contenitore_voti{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/*rendering evento
+.contenitore_evento{
+    display: flex;
+    flex-direction: column;
+}
+.contenitore_PF{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+.contenitore_partita{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.contenitore_partita p{
+    text-align: center;
+}
+.griglia_partita{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.contenitore_foto_ricordo{
+    width: 50%;
+}
+.foto_ricordo{
+    max-width: 100%;
+    border-radius: 2rem;
+}
+.nome_squadra{
+    text-align: center;
+}
+.punteggio{
+    display: flex;
+    align-items: center;
+}
+p{
+    font-size: large;
+}
+*/
+
+.contenitore_dettagli_utente{
+    display: flex;
+    flex-direction: row;
+}
+
+.immagine_utente{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+p{
+    font-size: large;
+}

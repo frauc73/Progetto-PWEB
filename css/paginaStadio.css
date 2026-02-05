@@ -1,0 +1,10 @@
+#contenitore_nome_stadio{
+    max-width: 80%;
+}
+.main_sito{
+    display: grid;
+    grid-template-columns: 3fr 7fr;
+}
+.left-sidebar{
+    border-right: 2px solid var(--pitch-dark);
+}

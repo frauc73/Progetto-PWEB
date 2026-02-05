@@ -1,0 +1,97 @@
+body{
+    background-image: url('../src/images/sfondo_sito_icone_small.png');
+    font-family: Arial, Helvetica, sans-serif;
+}
+#form-container{
+    background-color: white;
+    border: 3px solid #1f8a4c;
+    border-radius: 2rem;
+    position: absolute;
+    width: 40%;
+    height: fit-content;
+    left: 30%;
+    top: 20%;
+}
+#logo_sito{
+    position: absolute;
+    left: 35%;
+    top: -35%;
+    width: 30%;
+    background-color: white;
+    border: 3px solid #1f8a4c;
+    border-radius: 20%;
+}
+form{
+    padding: 5%;
+    height: 40%;
+}
+.campo{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    margin: 5%;
+}
+h3{
+    text-align: center;
+    color: #1f8a4c;
+}
+table{
+    width: 60%;
+    margin-left: 20%;
+}
+tbody{
+    width: 80%;
+}
+tr{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 5%;
+}
+td{
+    width: 80%;
+}
+td > input{
+    width: 100%;
+}
+.campo > input,
+td > input{
+    height: 2rem;
+    border: 2px solid #1f8a4c;
+    text-align: center;
+}
+label > img{
+    height: 4rem;
+    margin-right: 1rem;
+}
+#login,
+#registration{
+   width: 30%;
+   height: 2rem;
+   margin-left: 35%;
+   background-color: #1f8a4c;
+   color: white;
+   font-size: large;
+   font-weight: bold;
+   border: 2px solid #1f8a4c;
+}
+#form-container > p{
+    font-size: large;
+    text-align: center;
+}
+#form-container > p > a{
+    color: #1f8a4c;
+}
+#error-msg{
+    margin-left: 10%;
+    font-size: large;
+    color: red;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}

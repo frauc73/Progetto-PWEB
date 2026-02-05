@@ -1,0 +1,98 @@
+Nome,Campionato,Paese,NomeStadio,CompetizioneEuropea
+Arsenal,Premier League,Inghilterra,Emirates Stadium,NULL
+Aston Villa,Premier League,Inghilterra,Villa Park,NULL
+Bournemouth,Premier League,Inghilterra,Dean Court,NULL
+Brentford,Premier League,Inghilterra,Brentford Community Stadium,NULL
+Brighton & Hove Albion,Premier League,Inghilterra,Amex Stadium,NULL
+Chelsea,Premier League,Inghilterra,Stamford Bridge,NULL
+Crystal Palace,Premier League,Inghilterra,Selhurst Park,NULL
+Everton,Premier League,Inghilterra,Goodison Park,NULL
+Fulham,Premier League,Inghilterra,Craven Cottage,NULL
+Ipswich Town,Premier League,Inghilterra,Portman Road,NULL
+Leicester City,Premier League,Inghilterra,King Power Stadium,NULL
+Liverpool,Premier League,Inghilterra,Anfield,NULL
+Manchester City,Premier League,Inghilterra,Etihad Stadium,NULL
+Manchester United,Premier League,Inghilterra,Old Trafford,NULL
+Newcastle United,Premier League,Inghilterra,St James’ Park,NULL
+Nottingham Forest,Premier League,Inghilterra,The City Ground,NULL
+Southampton,Premier League,Inghilterra,St Mary’s Stadium,NULL
+Tottenham Hotspur,Premier League,Inghilterra,Tottenham Hotspur Stadium,NULL
+West Ham United,Premier League,Inghilterra,London Stadium,NULL
+Wolverhampton Wanderers,Premier League,Inghilterra,Molineux Stadium,NULL
+Bayern Munich,Bundesliga,Germania,Allianz Arena,NULL
+Borussia Dortmund,Bundesliga,Germania,Signal Iduna Park,NULL
+Bayer 04 Leverkusen,Bundesliga,Germania,BayArena,NULL
+Borussia Mönchengladbach,Bundesliga,Germania,Borussia-Park,NULL
+Eintracht Frankfurt,Bundesliga,Germania,Deutsche Bank Park,NULL
+RB Leipzig,Bundesliga,Germania,Red Bull Arena,NULL
+FC Köln,Bundesliga,Germania,RheinEnergieStadion,NULL
+VfL Wolfsburg,Bundesliga,Germania,Volkswagen Arena,NULL
+VfB Stuttgart,Bundesliga,Germania,Mercedes-Benz Arena,NULL
+SC Freiburg,Bundesliga,Germania,Europa-Park Stadion,NULL
+FC Union Berlin,Bundesliga,Germania,Stadion An der Alten Forsterei,NULL
+FSV Mainz 05,Bundesliga,Germania,MEWA Arena,NULL
+FC Augsburg,Bundesliga,Germania,WWK Arena,NULL
+TSG Hoffenheim,Bundesliga,Germania,PreZero Arena,NULL
+SV Werder Bremen,Bundesliga,Germania,Weserstadion,NULL
+FC Heidenheim,Bundesliga,Germania,Voith-Arena,NULL
+Atalanta,Serie A,Italia,Stadio di Bergamo,NULL
+Bologna,Serie A,Italia,Stadio Renato Dall'Ara,NULL
+Cagliari,Serie A,Italia,Unipol Domus,NULL
+Como,Serie A,Italia,Stadio Giuseppe Sinigaglia,NULL
+Cremonese,Serie A,Italia,Stadio Giovanni Zini,NULL
+Fiorentina,Serie A,Italia,Stadio Artemio Franchi,NULL
+Genoa,Serie A,Italia,Stadio Luigi Ferraris,NULL
+Hellas Verona,Serie A,Italia,Stadio Marcantonio Bentegodi,NULL
+Inter Milan,Serie A,Italia,Stadio Giuseppe Meazza,NULL
+Juventus,Serie A,Italia,Allianz Stadium,NULL
+Lazio,Serie A,Italia,Stadio Olimpico,NULL
+Lecce,Serie A,Italia,Stadio Via del Mare,NULL
+Milan,Serie A,Italia,San Siro,NULL
+Napoli,Serie A,Italia,Stadio Diego Armando Maradona,NULL
+Parma,Serie A,Italia,Stadio Ennio Tardini,NULL
+Pisa,Serie A,Italia,Cetilar Arena,NULL
+Roma,Serie A,Italia,Stadio Olimpico,NULL
+Sassuolo,Serie A,Italia,Mapei Stadium - Città del Tricolore,NULL
+Torino,Serie A,Italia,Stadio Olimpico Grande Torino,NULL
+Udinese,Serie A,Italia,Bluenergy Stadium - Stadio Friuli,NULL
+Paris Saint-Germain,Ligue 1,Francia,Parc des Princes,NULL
+Olympique de Marseille,Ligue 1,Francia,Stade Vélodrome,NULL
+Olympique Lyonnais,Ligue 1,Francia,Parc Olympique Lyonnais,NULL
+RC Lens,Ligue 1,Francia,Stade Bollaert-Delelis,NULL
+Girondins de Bordeaux,Ligue 1,Francia,Matmut Atlantique,NULL
+Stade Rennais FC,Ligue 1,Francia,Stade de la Route de Lorient,NULL
+AS Saint-Étienne,Ligue 1,Francia,Stade Geoffroy-Guichard,NULL
+FC Nantes,Ligue 1,Francia,Stade de la Beaujoire,NULL
+OGC Nice,Ligue 1,Francia,Allianz Riviera,NULL
+Montpellier HSC,Ligue 1,Francia,Stade de la Mosson,NULL
+FC Metz,Ligue 1,Francia,Stade Saint-Symphorien,NULL
+Stade de Reims,Ligue 1,Francia,Stade Auguste Delaune,NULL
+Stade de Strasbourg,Ligue 1,Francia,Stade de la Meinau,NULL
+FC Lorient,Ligue 1,Francia,Stade Yves Allainmat,NULL
+Angers SCO,Ligue 1,Francia,Stade Jean Bouin,NULL
+Dijon FCO,Ligue 1,Francia,Stade Gaston-Gerard,NULL
+Nîmes Olympique,Ligue 1,Francia,Stade des Costières,NULL
+Stade de Nice,Ligue 1,Francia,Allianz Riviera,NULL
+Paris FC,Ligue 1,Francia,Stade Sébastien-Charléty,NULL
+Toulouse FC,Ligue 1,Francia,Stadium de Toulouse,NULL
+FC Barcelona,LaLiga,Spagna,Camp Nou,NULL
+Real Madrid,LaLiga,Spagna,Estadio Santiago Bernabéu,NULL
+Atlético Madrid,LaLiga,Spagna,Estadio Wanda Metropolitano,NULL
+Real Sociedad,LaLiga,Spagna,Reale Arena,NULL
+Sevilla FC,LaLiga,Spagna,Estadio Ramón Sánchez Pizjuán,NULL
+Real Betis,LaLiga,Spagna,Estadio Benito Villamarín,NULL
+Valencia CF,LaLiga,Spagna,Estadio de Mestalla,NULL
+Villarreal CF,LaLiga,Spagna,Estadio de la Cerámica,NULL
+Athletic Club,LaLiga,Spagna,Estadio San Mamés,NULL
+Celta de Vigo,LaLiga,Spagna,Estadio de Balaídos,NULL
+RCD Espanyol,LaLiga,Spagna,RCD Espanyol Stadium,NULL
+Getafe CF,LaLiga,Spagna,Coliseum Alfonso Pérez,NULL
+Granada CF,LaLiga,Spagna,Nuevo Los Cármenes,NULL
+Elche CF,LaLiga,Spagna,Estadio Martínez Valero,NULL
+Osasuna,LaLiga,Spagna,Estadio El Sadar,NULL
+Levante UD,LaLiga,Spagna,Estadio Ciudad de Valencia,NULL
+Rayo Vallecano,LaLiga,Spagna,Estadio de Vallecas,NULL
+UD Alavés,LaLiga,Spagna,Estadio de Mendizorroza,NULL
+RCD Mallorca,LaLiga,Spagna,Estadi de Son Moix,NULL
+Girona FC,LaLiga,Spagna,Estadi Montilivi,NULL
+Real Valladolid,LaLiga,Spagna,Estadio José Zorrilla,NULL

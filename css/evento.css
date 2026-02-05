@@ -1,0 +1,89 @@
+
+h2, h3 {
+    color: #1f8a4c;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+h2{
+    margin-top: 7%;
+}
+#contenitore_partita{
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+}
+.squadra{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+}
+.logo{
+    object-fit: contain;
+    margin-bottom: 2%;
+}
+#evento_form{
+    display: flex;
+    flex-direction: column;
+}
+select{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 1rem;
+    box-sizing: border-box;
+    text-align: center;
+}
+input[type="file"], input[type="date"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
+input:focus {
+    outline: none;
+    border-color: #1f8a4c;
+    box-shadow: 0 0 5px rgba(31, 138, 76, 0.3);
+}
+#score_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.punteggio{
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+    margin: 1rem;
+    text-align: center;
+    border-radius: 10px;
+}
+#contenitore_foto{
+    display: flex;
+    flex-direction: column;
+}
+#select_foto{
+    width: 30%;
+    margin-bottom: 1rem;
+}
+#foto_ricordo{
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+}
+#caption{
+    width: 80%;
+}
+.staccato{
+    margin-left: 2%;
+}
+.testo_centrale{
+    text-align: center;
+}
+#back_home{
+    margin-right: 2%;
+}

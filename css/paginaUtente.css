@@ -1,0 +1,100 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    justify-content: flex-start;
+    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 0;
+    overflow: hidden;
+    margin: 0;
+}
+/*MODIFICHE DA VALUTARE*/
+/* Foto profilo con bordo "Social" */
+#contenitore_foto_profilo {
+    height: auto;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#foto_profilo {
+    background-color: white;
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Evita che la foto si schiacci */
+    border-radius: 50%;
+    border: 4px solid var(--pitch-medium); /* Bordo verde */
+    box-shadow: 0 0 15px rgba(31, 138, 76, 0.5); /* Alone luminoso */
+}
+
+#contenitore_azioni_utente{
+    display: flex;
+    justify-content: end;
+}
+
+#contenitore_statistiche_utente{
+    text-align: center;
+    color: white;
+}
+/*
+#contenitore_foto_profilo{
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#foto_profilo{
+    max-width: 300px;
+    background-color: white;
+    border-radius: 2rem;
+}*/
+.sidebar{
+    background: rgba(0, 0, 0, 0.4);
+}
+.sidebar h2{
+    color: white;
+}
+#contenuto_dialog{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#contenuto_dialog select{
+    text-align: center;
+    font-size: larger;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.logo_squadra_dialog,
+.logo_squadra_statitstiche{
+    max-width: 200px;
+}
+#bottoni_dialog{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#foto_profilo_dialog{
+    border-radius: 2rem;
+    height: 300px;
+}
+#select_foto_profilo{
+    margin-bottom: 1rem;
+    font-size: large;
+}
+#contenitore_squadra_supportata{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo_squadra_supportata{
+    max-width: 150px;
+}
+.sidebar p{
+    font-size: 3rem;
+    margin: 0;
+}

@@ -1,0 +1,140 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    justify-content: flex-start;
+    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 0;
+    overflow: hidden;
+    margin: 0;
+}
+/*Nascondo la barra di scorrimento, devo differenziare per chrome e firefox*/
+.bacheca::-webkit-scrollbar {
+    display: none;
+}
+.bacheca{
+    scrollbar-width: none;
+}
+
+
+.right-sidebar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.barra_ricerca{
+    border-radius: 2rem;
+    border: 2px solid white;
+    margin-bottom: 2rem;
+    text-align: center;
+    height: 2rem;
+    width: 80%;
+    font-size: large;
+    background-color: var(--pitch-medium);
+    color: var(--text-white);
+
+}
+
+#contenitore_ricerca{
+    background-color: var(--bg-overlay);
+    border-radius: 1rem;
+    width: 100%;
+}
+
+.contenitore_risultato_ricerca{
+    padding: 1rem;
+}
+
+.elemento_lista_ricerca{
+    display: flex;
+    flex-direction: row;
+}
+
+.icona_elemento{
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+}
+
+/*Codice per disegnare il menù a tendina*/
+.menu_tendina {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px; 
+    height: 100vh;
+    background-color: var(--bg-overlay); 
+    box-shadow: 4px 0 15px rgba(0,0,0,0.3);
+    padding: 2rem;
+    padding-top: 6rem; 
+    z-index: 1000;
+    
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+    overflow-y: auto;
+}
+
+.menu_tendina.aperto {
+    transform: translateX(0);
+}
+
+.icona_menu{
+    width: 40px;  
+    height: 40px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+}
+
+.icona_menu:hover{
+    transform: scale(1.05);
+}
+
+.icona_menu img{
+    width: 100%;
+}
+
+.chiudi_menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: var(--pitch-dark);
+    cursor: pointer;
+}
+
+#bottone_logout{
+    background-color: red;
+    border-color: red;
+    text-align: center;
+    color: white;
+    width: 30%;
+    height: 2rem;
+    border-radius: 1rem;
+}
+
+#bottone_logout:hover{
+    background-color: #cc0000;;
+    border-color: #cc0000;
+}
+
+.separatore_menu {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1.5rem 0;
+}
+
+.left-sidebar {
+    position: relative;
+    background: transparent; 
+    box-shadow: none;
+    padding-top: 2rem; 
+}
+
+#ancora_logout:hover{
+    color: red;
+}

@@ -1,0 +1,174 @@
+Colore logo: #1f8a4c
+Colore verde secondario: #2fa868 
+Colore home page: verde con gradiente, controlla su Canva
+
+Formato username: "/[A-Za-z0-9_]{3,16}/"
+Formato password: "/[A-Za-z0-9_$!%@]{4,10}/"
+
+Formato tabella User(Id, Username, Password, Nome, Cognome) con Id primary key
+
+Sito da cui ho scaricato i loghi: https://github.com/luukhopman/football-logos.
+Sito da cui ho scaricato le icone : https://icons8.it/icons
+
+Quando creo un post non salvo direttamente la foto sul database. Faccio questa scelta per una questione di performance.
+Le foto caricate dagli utenti saranno salvate in una cartella specifica, con il seguente path /src/posts. Il nome del file sarà idPost.jpeg
+Per accedere ad un file quindi il percorso sarà /src/posts/idPost.jpeg 
+
+Stessa cosa vale per le foto profilo degli utenti. Il path sarà /src/profile_pic. I nome del file sarà idUser.jpeg
+Per accedere ad un file quindi il percorso sarà /src/profile_pic/idUser.jpeg 
+
+La tabella Recensioni è ancora in fase di sviluppo, devo capire bene quali sono i parametri da recensire.
+
+PUNTO DI FORZA DEL PROGETTO
+Per popolare i menù a tendina che contengono le squadre da selezionare quando si crea un evento voglio usare una funzione AJAX
+questo per far si che:
+1. Aggiorno dinamicamente i menù non inserendo nel menù della squadra ospite la squadra di casa
+2. Posso espandere la logica di funzionamento in futuro.
+3. se l’utente sbaglia la squadra di casa, selezionandone un’altra la lista della squadra ospite può essere aggiornata senza ricaricare la pagina.
+
+
+NB QUANDO SCRIVI IL FILE CREA evento 
+Ricorda che le squadre nel database non hanno id, bensì la loro chiave è il Nome.
+PUNTO DI FORZA DEL PROGETTO
+La ricerca del logo della squadra avviene attraverso la costruzione di un path dove sono salvati i loghi.
+Il path ha la seguente forma "../src/loghi_squadre/Paese-Campionato/NomeSquadra.png" così posso:
+1. Non appesantire il db con dei file
+2. Aggiungere campionati con lo stesso nome ma che appartengono a paesi diversi, tipo la Bundesliga Austriaca.
+
+RICONTROLLARE setEvento.php
+
+11 Gennaio 2026 
+Punti da fare per finire evento.php:
+1. Mostrare un anteprima della foto selezionata FATTO
+2. Eliminare l'opzione con il nome della squadra di casa dalla selezione della squadra ospite (possibile soluzione con hidden per il valore) FATTO
+3. Sistemare la situazione di rollback, cioè dopo che scelgo la squadra se ritorno a selezione_casa ad esempio devo cancellare il nome del campionato e dello stadio FATTO
+4. Sistemare il display FATTO
+Dopo aver fatto evento.php: Scrivere il codice per salvare il form nel database
+Da domani pensiamo a salvare i dati nel database.
+
+12 gennaio 2026: 
+Ho pensato al workflow da seguire ora:
+1. Salvare l'evento nel database FATTO
+2. Costruire il meccanismo delle recensioni (simile a come è stato costruito il meccanismo per gli eventi) FATTO
+3. Costruire la pagina per l'utente
+4. Costruire la pagina per gli stadi
+A questo punto l'utente è in grado di interagire con se stesso, cioè vede solo le cose che ha pubblicato lui 
+Da qui in poi implementiamo i meccanismi per l'interazione tra utenti:
+1. Sistema di following 
+2. Sistema di commento
+A questo punto tutto è pronto per essere assemblato attraverso la creazione della HOMEPAGE
+
+File setEvento.php:
+In pratica il file evento.php è la pagina in cui l'utente crea il suo evento, dopo aver premuto il bottone submit il file js chiama il file setEvento.php che recupera le informazioni del form con le variabili del browser. Ti scrivo anche il formato che la tabella del database che deve contenere le informazioni relative ai post ha: Eventi(IdPost,TimeStampPost,User, HomeTeam, GoalHT, AwayTeam, GoalAT, NomeStadio,PathFotoRicordo,DescrizionePost).
+
+Ti do qualche informazione sulla tabella:
+
+1. IdPost è un id progressivo, quindi si aggiorna in automatico quando inserisco un elemento
+
+2. TimeStampPost deve contenere il timestamp del momento in cui sto salvando il post nella tabella
+
+3. L'User è una variabile di Sessione, infatti un utente prima fa il login e solo dopo può avere la possibilità di creare un post
+
+4. HomeTeam, GoalHT, AwayTeam, GoalAT servono a contenere il risultato della partita dove HT sta per home team e AT sta per away team
+
+5. NomeStadio lo vorrei recuperare con una query in cui cerco il nomeStadio della squadra di casa
+
+6. PathFotoRicordo deve contenere il path in cui salvo la foto. Non voglio infatti salvarla direttamente nel database, ma in una cartella che ha il seguente path "src/posts". src sta nella stessa cartella in cui sta la cartella php, cartella che contiene i file php come setEvento (il path per setEvento è "php/SetEvento.php")
+
+7. DescrizionePost è il contenuto della text area del form
+
+Domani risolvi i problemi della setEvento.php
+
+13 Gennaio 2026:
+COSA IMPORTANTE: QUANDO CONSEGNI NON INSERIRE NEI FILE LE CARTELLE posts e profile_pic (quelle che stanno dentro src).
+Queste verranno generate dallo script php se non presenti.
+Pomeriggio:
+Modifica la tabella che contiene le recensioni.
+
+Nella tabella recensioni uso i TINYINT in quanto devo salvare valori di interi piccoli (da 1 a 5)
+Per lo stesso motivo uso CHAR al campo Copertura
+
+COME HO FATTO A FARE I PALLONI AL POSTO DEI RADIO BUTTON
+1. Ho scaricato una serie di icone dal sito https://icons8.it/icons, poi ho scelto quella che mi piaceva di più
+2. Ho nascosto il vero radio button
+3. Ho messo di default le icone grigie con filter: grayscale(100%) opacity(0.5);
+4. Nel file html ho messo gli input in ordine decrescente, poi modifico questa cosa con la flexbox in direzione column-inverse.
+    Questo meccanismo è fondamentale per il passaggio successivo
+5. Inserisco l'effetto Hover, cioè il passaggio sopra il mouse
+    In particolare il comando .rating label:hover ~ label serve a cacciare il filtro grigio dagli elementi che in html vengono dopo quello selezionato
+    NB: Ecco perchè è fondamentale il punto 4, perchè gli elementi che vengono dopo in html in questo modo risultano essere quelli che vengono prima nella pagina
+6. Quando effettivamente premo un input vengono colorati lui e quelli dopo, sempre con lo stesso trucco
+
+Idea: valuta la possibilità di associare un suono di una tifoseria al valore della scelta del parametro valutato.
+Ad esempio: voto 5 = grande esultanza del pubblico, voto 1 = fischi.
+
+Da domani completa il file per creare la recensione e scrivi il file per salvare la recensione nel database.
+Finisci di decidere come strutturare la legenda del voto.
+
+14 Gennaio 2026
+Vanno aggiunte delle informazioni vicino ai campi input:
+1. Sotto le text area inserire in piccolo il massimo dei caratteri da inserire.
+2. Sotto l'inserimento della foto specificare i formati accettati.
+
+Implementa un metodo per attivare il bottone solo quando la recensione è completa FATTO, ANCHE PER EVENTO
+L'input sul parcheggio può essere null, per prevedere che l'utente non ne ha usufruito. Anche sui servizi gli input possono essere null.
+Vanno specificati i campi che possono essere ignorati.
+SOTTOLINEARE IL TONO COLLOQUIALE E AMICHEVOLE DELLE DOMANDE, riprendono il concetto di diario.
+
+15 Gennaio 2026
+Valido i file che ho fatto finora:
+I file CSS andavano tutti bene.
+Ho corretto anche alcuni errori sul file evento.php. 
+Continua a non passare benissimo le validazioni per lo spazio nel nome delle cartelle. RISOLTO.
+
+17 Gennaio 2026
+Vanno aggiornati i font di tutti i documenti fatti fin'ora.
+Comincio a scrivere il codice per la pagina Utente.
+
+18 Gennaio 2026
+Ho sistemato il layout della pagina dell'Utente, comincio a scrivere i file per gestire la logica di funzionamento.
+Come funzionerà il flusso:
+Nella Homepage (Ricerca): Quando stampo i risultati della ricerca (es. "Francesco Lombardo"), creo un link dinamico. 
+Invece di un semplice href="paginaUtente.php", il link sarà composto dinamicamente: <a href="paginaUtente.php?utente=francesco_lombardo">Francesco Lombardo</a>
+Nella paginaUtente.php (Ricezione): All'inizio del tuo script PHP, leggo quel parametro dall'URL usando l'array superglobale $_GET.
+Continua a ragionare sulla soluzione delle funzioni ajax per riempire la pagina dell'utente
+
+19 Gennaio 2026
+Ricontrollare i file login e registrazione per aggiornare le funzioni sull'sql, usando le funzioni freccia.
+Bisogna capire come gestire l'errore dell'inserimento di un username non valido.
+Per distinguere se un post è un Evento o una Recensione nella risposta della query trasformata in json scrivo a mano il campo type
+Oggi sono molto soddisfatto, penso di aver fatto veramente un bel lavoro.
+Vanno terminati tutti i file per gestire la pagina dell'utente, con i seguenti punti da compilare:
+1. Decidere e costruire il layout delle recensioni FATTO 
+2. Cominciare  a scrivere il file css per realizzare i layout. FATTO
+3. Capire come fare il meccanismo delle dialog per la modifica dei parametri.
+4. Implementare i meccanismi di modifica dei parametri del proprio profilo.
+
+20 Gennaio 2026
+Ho spostato tutte le funzioni per generare il render di un post nel file renderingPost.js così da poter riutilizzare il meccanismo anche nella scrittura dei codici per la Homepage
+Stessa cosa per il file renderingPost.css
+Ho fatto una prima bozza di come possono essere rappresentati i post.
+Prossimi obiettivi:
+1. Capire come abbellire un po' i post
+2. Implementare il meccanismo per rendere funzionanti i bottoni modifica.
+3. Implementare il meccanismo per riempire le statistiche
+
+22 Gennaio 2026
+Imposta un reset dopo l'invio della recensione (forse)
+Sistema il filtro per le pagine visitate di altri utenti che non siano quello loggato
+
+SE SI BLOCCA MYSQL DATABASE SU XAMPP È COLPA DEL PROCESSO FANTASMA, CHIUDILO DAL MONITORAGGIO ATTIVITA'
+
+23 Gennaio 2026
+Riprendi implementando il meccanismo che salva la foto profilo
+
+24 Gennaio 2026
+Sto cercando di aggiustare il server di MYSQL, creo un bakcup chiamato my_sql_backup2026 dentro la cartella var di xamppfiles di XAMPP.
+
+3 febbraio 2026
+Da rivedere lo stile della pagina login e registrazione. Dai un'occhiata anche al codice.
+
+<h2>Inserisci un evento</h2>
+						<button id="inserisci_evento">Inserisci</button>
+						<h2>Inserisci una recensione</h2>
+						<button id="inserisci_recensione">Inserisci</button>

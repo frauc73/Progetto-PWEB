@@ -1,0 +1,78 @@
+h2, h3 {
+    color: #1f8a4c;
+    margin-bottom: 1rem;
+}
+#contenitore_stadio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+#form_stadio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+}
+#form_stadio select,
+#form_stadio input{
+    font-size: large;
+}
+.campo_form_stadio{
+    padding: 5%;
+    margin-bottom: 2rem;
+    text-align: center;
+    border-radius: 2rem;
+}
+#contenitore_recensione{
+    padding: 2rem;
+}
+#contenitore_recensione h2{
+    text-align: center;
+}
+.rating input[type="radio"], .rating_copertura input[type="radio"]  {
+    display: none;
+}
+.rating label, .rating_copertura label {
+    font-size: 30px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    filter: grayscale(100%) opacity(0.5); 
+}
+.rating {
+    display: flex;
+    flex-direction: row-reverse; 
+    justify-content: flex-end;
+    align-items: center;
+}
+.rating label:hover,
+.rating label:hover ~ label {
+    filter: grayscale(0%); 
+    transform: scale(1.2); 
+}
+.rating input:checked ~ label,
+.rating_copertura input:checked ~ label {
+    filter: grayscale(0%);
+}
+.contenitore_parametro{
+    display: flex;
+    flex-direction: row;
+}
+.contenitore_testo_valutazione{
+    margin-left: 2rem;
+
+}
+.rating_copertura{
+    display: flex;
+    flex-direction: column;
+}
+.rating_copertura label:hover{
+    filter: grayscale(0%); 
+}
+table{
+    width: fit-content;
+}
+#bottone_submit{
+    width: 30%;
+    margin-left: 2rem;
+}
