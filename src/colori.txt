@@ -181,3 +181,11 @@ Per aggiornare la repository github :
 In realtà si può fare direttamente da visual studio
 
 Rifletti se strutturare i post su più pagine. (Mi puzza un po' come cosa, deve essere comunque un social)
+Rifletti sull'aumentare il numero di caratteri della password ( o se togliere del tutto il limite).
+Aggiungi la modifica del profilo nel menù a tendina della homepage.
+Rivedi il sistema per aggiornare il logo della squadra la prima volta
+In pratica per come ho scritto il codice non compare il contenitore della squadra supportata, perchè 
+la prima volta risulta null.
+Valuta di inserire un modo per aggiungere i post dalla propria pagina
+Reinderizza l'utente alla pagina dopo che ha inviato la recensione
+Rifletti su un meccanismo di notifiche quando qualcuno ti comincia a seguire

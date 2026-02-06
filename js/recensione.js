@@ -141,7 +141,6 @@ function inviaForm(e){
         .then(data => {
         alert(data.message);
         if (data.success){
-            e.target.reset();
             //reinderizzo l'utente alla sua homepage
             window.location.href = "../index.php";
         }

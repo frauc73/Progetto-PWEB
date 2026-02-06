@@ -39,7 +39,6 @@
 				<div id="menu_tendina" class="menu_tendina">
 					<button id="chiudi_menu" class="chiudi_menu">&times;</button>
 					<div>
-
 						<a href="./php/evento.php">
 							<h2>Inserisci un evento</h2>
 						</a>
@@ -48,6 +47,12 @@
 
 						<a href="./php/recensione.php">
 							<h2>Inserisci una recensione</h2>
+						</a>
+						
+						<hr class="separatore_menu">
+
+						<a href="./php/paginaUtente.php">
+							<h2>Modifica il tuo profilo</h2>
 						</a>
 						
 						<hr class="separatore_menu">

@@ -38,10 +38,13 @@
         </div>
         <main class="main_sito">
             <aside class="sidebar left-sidebar">
-                <h2>Valutazioni</h2>
+                <h1>Valutazioni</h1>
+                <div id="contenitore_valutazioni">
+                    
+                </div>
             </aside>
             <section class="bacheca">
-                <h2>Recensioni</h2>
+                <h1>Recensioni</h1>
                 <div id="contenitore_post">
 
                 </div>

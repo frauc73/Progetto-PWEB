@@ -89,7 +89,11 @@ function riempiBacheca(username){
                 return;
             }
             data.forEach(post =>{
-                let nuovoPost = disegnaRecensione(post,false,true,true,post.Username,post.PathFotoProfilo, false);
+                let nuovoPost = null;
+                if(post.type === 'evento')
+                    nuovoPost = disegnaEvento(post,false,true,post.Followed,post.FotoProfiloFollowed, true);
+                else if (post.type === 'recensione')
+                    nuovoPost = disegnaRecensione(post,false,true,true,post.Followed,post.FotoProfiloFollowed, true);
                 if(nuovoPost)
                     contenitorePost.appendChild(nuovoPost);
             });
