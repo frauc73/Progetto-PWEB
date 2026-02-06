@@ -38,7 +38,6 @@
         </div>
         <main class="main_sito">
             <aside class="sidebar left-sidebar">
-                <h1>Valutazioni</h1>
                 <div id="contenitore_valutazioni">
                     
                 </div>

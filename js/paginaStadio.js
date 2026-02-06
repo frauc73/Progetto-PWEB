@@ -49,13 +49,115 @@ function calcolaStatistiche(nomeStadio){
                 return;
             }
             
-            if(data.length === 0){
+            if(!data.ValutazioneGenerale){
                 const testoBachecaVuota = document.createElement("p");
                 testoBachecaVuota.textContent = "Nessuna recensione dello stadio.";
                 contenitoreValutazioni.appendChild(testoBachecaVuota);
                 return;
             }
             //l'array data ha un solo elemento
-            
+            disegnaStatistiche(contenitoreValutazioni, data);
         });
+}
+
+function disegnaStatistiche(contenitore, statistiche){
+    //Valutazione Generale
+    const contenitoreValutazioneGenerale = document.createElement("div");
+    contenitoreValutazioneGenerale.classList.add("contenitore_valutazione");
+    contenitore.appendChild(contenitoreValutazioneGenerale);
+
+    const valutazioneGenerale = document.createElement("h1");
+    valutazioneGenerale.textContent = "Valutazione generale: " + parseFloat(statistiche.ValutazioneGenerale).toFixed(1);
+    contenitoreValutazioneGenerale.appendChild(valutazioneGenerale);
+
+    //Impianto
+    const contenitoreValutazioneImpianto = document.createElement("div");
+    contenitoreValutazioneImpianto.classList.add("contenitore_macrocampo");
+    contenitore.appendChild(contenitoreValutazioneImpianto);
+
+    const valutazioneImpianto = document.createElement("h1");
+    valutazioneImpianto.textContent = "Impianto: " + parseFloat(statistiche.MediaImpianto).toFixed(1);
+    contenitoreValutazioneImpianto.appendChild(valutazioneImpianto);
+
+    const valutazioneVisibilita = document.createElement("h2");
+    valutazioneVisibilita.textContent = "Visibilità: " + parseFloat(statistiche.MediaVisibilita).toFixed(1);
+    contenitoreValutazioneImpianto.appendChild(valutazioneVisibilita);
+
+    const valutazioneDistanzaCampo = document.createElement("h2");
+    valutazioneDistanzaCampo.textContent = "Distanza dal campo: " + parseFloat(statistiche.MediaDistanzaCampo).toFixed(1);
+    contenitoreValutazioneImpianto.appendChild(valutazioneDistanzaCampo);
+
+    //Logistica
+    const contenitoreValutazioneLogistica = document.createElement("div");
+    contenitoreValutazioneLogistica.classList.add("contenitore_macrocampo");
+    contenitore.appendChild(contenitoreValutazioneLogistica);
+
+    const valutazioneLogistica = document.createElement("h1");
+    valutazioneLogistica.textContent = "Logistica: " + parseFloat(statistiche.MediaLogistica).toFixed(1);
+    contenitoreValutazioneLogistica.appendChild(valutazioneLogistica);
+
+    const valutazioneAccessibilita = document.createElement("h2");
+    valutazioneAccessibilita.textContent = "Accessibilità: " + parseFloat(statistiche.MediaAccessibilita).toFixed(1);
+    contenitoreValutazioneLogistica.appendChild(valutazioneAccessibilita);
+
+    const valutazioneParcheggio = document.createElement("h2");
+    if(statistiche.MediaParcheggio){
+        valutazioneParcheggio.textContent = "Parcheggio: " + parseFloat(statistiche.MediaParcheggio).toFixed(1);
+        contenitoreValutazioneLogistica.appendChild(valutazioneParcheggio);
+    }
+    else{
+        valutazioneParcheggio.textContent = "Parcheggio:";
+        const parcheggioNull = document.createElement("p");
+        parcheggioNull.textContent = "Nessuna informazione sui parcheggi.";
+        contenitoreValutazioneLogistica.appendChild(valutazioneParcheggio);
+        contenitoreValutazioneLogistica.appendChild(parcheggioNull);
+    }
+
+    const valutazioneGestioneIngressi = document.createElement("h2");
+    valutazioneGestioneIngressi.textContent = "Gestione ingressi: " + parseFloat(statistiche.MediaGestioneIngressi).toFixed(1);
+    contenitoreValutazioneLogistica.appendChild(valutazioneGestioneIngressi);
+
+    //Servizi
+    const contenitoreValutazioneServizi = document.createElement("div");
+    contenitoreValutazioneServizi.classList.add("contenitore_macrocampo");
+    contenitore.appendChild(contenitoreValutazioneServizi);
+
+    const valutazioneServizi = document.createElement("h1");
+    if(statistiche.MediaServizi){
+        valutazioneServizi.textContent = "Servizi: " + parseFloat(statistiche.MediaServizi).toFixed(1);
+        contenitoreValutazioneServizi.appendChild(valutazioneServizi);
+
+        //se ci sono informazioni sui servizi mostriamo anche i sottocampi
+        const valutazioneServiziIgenici = document.createElement("h2");
+        if(statistiche.MediaServiziIgenici){
+            valutazioneServiziIgenici.textContent = "Servizi igenici: " + parseFloat(statistiche.MediaServiziIgenici).toFixed(1);
+            contenitoreValutazioneServizi.appendChild(valutazioneServiziIgenici);
+        }
+        else{
+            valutazioneServiziIgenici.textContent = "Servizi igenici:";
+            const serviziIgeniciNull = document.createElement("p");
+            serviziIgeniciNull.textContent = "Nessuna informazione sui servizi igenici.";
+            contenitoreValutazioneServizi.appendChild(valutazioneServiziIgenici);
+            contenitoreValutazioneServizi.appendChild(serviziIgeniciNull);
+        }
+
+        const valutazioneRistorazione = document.createElement("h2");
+        if(statistiche.MediaRistorazione){
+            valutazioneRistorazione.textContent = "Servizi igenici: " + parseFloat(statistiche.MediaRistorazione).toFixed(1);
+            contenitoreValutazioneServizi.appendChild(valutazioneRistorazione);
+        }
+        else{
+            valutazioneRistorazione.textContent = "Servizi igenici:";
+            const ristorazioneNull = document.createElement("p");
+            ristorazioneNull.textContent = "Nessuna informazione sui servizi igenici.";
+            contenitoreValutazioneServizi.appendChild(valutazioneRistorazione);
+            contenitoreValutazioneServizi.appendChild(ristorazioneNull);
+        }
+    } else {
+        valutazioneServizi.textContent = "Servizi:";
+        const serviziNull = document.createElement("p");
+        serviziNull.textContent = "Nessuna informazione sui servizi.";
+        contenitoreValutazioneServizi.appendChild(valutazioneServizi);
+        contenitoreValutazioneServizi.appendChild(serviziNull);
+    }
 }

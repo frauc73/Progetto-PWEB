@@ -159,7 +159,7 @@ function disegnaRecensione(post, isOwner, utente = false, mostraUtente = false, 
     impianto.appendChild(h2Impianto);
 
     const h3Visibilita = document.createElement("h3");
-    h3Visibilita.textContent = "Visibilita";
+    h3Visibilita.textContent = "Visibilità";
     impianto.appendChild(h3Visibilita);
     const votoVisibilita = disegnaVoto("visibilita", post.VotoVisibilita, homepage);
     impianto.appendChild(votoVisibilita);
@@ -187,7 +187,7 @@ function disegnaRecensione(post, isOwner, utente = false, mostraUtente = false, 
     logistica.appendChild(h2Logistica);
 
     const h3Accessibilita = document.createElement("h3");
-    h3Accessibilita.textContent = "Accessibilita";
+    h3Accessibilita.textContent = "Accessibilità";
     logistica.appendChild(h3Accessibilita);
     const votoAccessibilita = disegnaVoto("accessibilita", post.VotoAccessibilita, homepage);
     logistica.appendChild(votoAccessibilita);

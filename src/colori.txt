@@ -189,3 +189,6 @@ la prima volta risulta null.
 Valuta di inserire un modo per aggiungere i post dalla propria pagina
 Reinderizza l'utente alla pagina dopo che ha inviato la recensione
 Rifletti su un meccanismo di notifiche quando qualcuno ti comincia a seguire
+
+Idea: filtra le recensioni per settore
+tipo se l'utente sceglie Settore Ospiti sia recensioni che valutazioni sono relative al settore Ospiti

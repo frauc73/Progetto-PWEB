@@ -1,3 +1,14 @@
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    min-height: 100vh;
+    padding-bottom: 0;
+    overflow: hidden;
+    margin: 0;
+}
+
 #contenitore_nome_stadio{
     max-width: 80%;
 }
@@ -7,4 +18,20 @@
 }
 .left-sidebar{
     border-right: 2px solid var(--pitch-dark);
+}
+
+.contenitore_valutazione,
+.contenitore_macrocampo{
+    background-color: var(--bg-overlay);
+    border-radius: 12px;
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: transform 0.2s ease;
+}
+
+.contenitore_macrocampo h1{
+    color: var(--pitch-dark);
+    border-bottom: 2px solid var(--pitch-medium);
 }
