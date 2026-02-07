@@ -41,6 +41,8 @@
             $params[] = $settore;
             $types .= "s";
         }
+        //ordino in base alla data della recensione
+        $query .= " ORDER BY DataRecensione DESC";
         if($stmt = $connection->prepare($query)){
             //uso l'operatore splat (...) per usare l'array dentro bind param
             $stmt->bind_param($types,...$params);
@@ -56,14 +58,7 @@
             echo json_encode(['success' => false, 'message' => 'Preparazione della query fallita.']);
             exit();
         }
-
-        //termino ordinando il vettore in base al timestamp
-        usort($recensioni, function($a, $b){ 
-            $ta = strtotime($a['DataRecensione']);
-            $tb = strtotime($b['DataRecensione']);
-            //ordine decrescente
-            return $tb - $ta;
-        });
+        
         echo json_encode($recensioni);
     } else if($azione === "calcola_statistiche"){
         //Tabella Recensioni(IdRecensione,TimeStampPost,Username,Stadio,Settore,DataRecensione,VotoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione)

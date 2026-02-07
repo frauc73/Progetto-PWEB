@@ -32,7 +32,10 @@ function riempiBacheca(nomeStadio, settore){
             
             if(data.length === 0){
                 const testoBachecaVuota = document.createElement("p");
-                testoBachecaVuota.textContent = "Nessuna recensione per quel settore dello stadio.";
+                if(settore === "tutti")
+                    testoBachecaVuota.textContent = "Nessuna recensione per questo stadio.";
+                else
+                    testoBachecaVuota.textContent = "Nessuna recensione per questo settore dello stadio.";
                 contenitorePost.appendChild(testoBachecaVuota);
                 return;
             }
@@ -60,7 +63,10 @@ function calcolaStatistiche(nomeStadio, settore){
             
             if(!data.ValutazioneGenerale){
                 const testoBachecaVuota = document.createElement("p");
-                testoBachecaVuota.textContent = "Nessuna recensione per quel settore dello stadio.";
+                if(settore === "tutti")
+                    testoBachecaVuota.textContent = "Nessuna recensione per questo stadio.";
+                else
+                    testoBachecaVuota.textContent = "Nessuna recensione per questo settore dello stadio.";
                 contenitoreValutazioni.appendChild(testoBachecaVuota);
                 return;
             }

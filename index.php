@@ -25,6 +25,18 @@
                 <img src="./src/images/logo_sito.png" alt="Logo Sito" id="logo_sito_hl">
             </div>
             <h1>Diario del Tifoso</h1>
+			<div id="contenitore_bottone_ricerca">
+				<button id="ricerca">
+					<img src="./src/icons/ricerca.png" alt="Icona di ricerca">
+				</button>
+				<div id="tendina_ricerca" class="hidden">
+					<h2>Cerca</h2>
+					<input type="text" id="barra_ricerca" class="barra_ricerca" placeholder="Cerca...">
+					<div id="contenitore_ricerca">
+
+					</div>
+				</div>
+			</div>
             <div class="high_right">
                 <a href="./php/paginaUtente.php?username=<?php echo $_SESSION['Username']; ?>">
                     <img src="<?php echo $fotoProfiloUtenteLoggato?>" alt="Foto Profilo" class="profile-pic">
@@ -69,11 +81,6 @@
 				</div>
 			</section>
 			<aside class="sidebar right-sidebar">
-				<h2>Cerca</h2>
-				<input type="text" id="barra_ricerca" class="barra_ricerca" placeholder="Cerca...">
-				<div id="contenitore_ricerca">
-
-				</div>
 			</aside>
 		</main>
 		<footer>

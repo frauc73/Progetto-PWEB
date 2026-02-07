@@ -24,28 +24,6 @@ body{
     align-items: center;
 }
 
-.barra_ricerca{
-    border-radius: 2rem;
-    border: 2px solid white;
-    margin-bottom: 2rem;
-    text-align: center;
-    height: 2rem;
-    width: 80%;
-    font-size: large;
-    background-color: var(--pitch-medium);
-    color: var(--text-white);
-
-}
-
-#contenitore_ricerca{
-    background-color: var(--bg-overlay);
-    border-radius: 1rem;
-    width: 100%;
-}
-
-.contenitore_risultato_ricerca{
-    padding: 1rem;
-}
 
 .elemento_lista_ricerca{
     display: flex;
@@ -137,4 +115,83 @@ body{
 
 #ancora_logout:hover{
     color: red;
+}
+
+/*Parte per disegnare la tendina della barra di ricerca*/
+#contenitore_bottone_ricerca{
+    position: relative;
+    margin-left: auto;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+#ricerca{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+#ricerca:hover {
+    transform: scale(1.1);
+}
+
+#tendina_ricerca {
+    position: absolute;
+    top: 130%; 
+    right: -20px; 
+    width: 320px;
+    background-color: var(--bg-overlay);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 3000;
+}
+
+#tendina_ricerca.hidden {
+    display: none !important;
+}
+
+#tendina_ricerca h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--pitch-dark);
+    font-size: 1.5rem;
+}
+
+.barra_ricerca{
+    height: 2rem;
+    width: 80%;
+    margin-bottom: 0;
+    border-radius: 2rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    font-size: large;
+    color: var(--pitch-medium);
+}
+
+#barra_ricerca:focus-visible{
+    outline: none;
+    border: 1px solid #ccc; 
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+#contenitore_ricerca{
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+    border-radius: 1rem;
+}
+
+.contenitore_risultato_ricerca{
+    padding: 1rem;
 }

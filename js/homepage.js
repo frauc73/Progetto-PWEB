@@ -11,6 +11,7 @@ function inizializza(){
     const utenteLoggato = document.body.dataset.utenteLoggato;
     riempiBacheca(utenteLoggato);
     gestioneMenuTendina();
+    gestioneTendinaRicerca();
 }
 
 function aggiornaRicerca(e){
@@ -58,7 +59,7 @@ function eseguiRicerca(stringa){
                 if(elem.type === "stadio")
                     iconaElemento.src = "./src/icons/iconaStadio.png";
                 else
-                    iconaElemento.src = elem.PathFotoProfilo;
+                    iconaElemento.src = elem.PathFotoProfilo.replace("../", "./");
                 anchor.appendChild(iconaElemento);
 
                 const testoElemento = document.createElement("p");
@@ -121,5 +122,37 @@ function gestioneMenuTendina(){
         if (!isClickInsideMenu && !isClickOnIcon && menuTendina.classList.contains('aperto')) {
             menuTendina.classList.remove('aperto');
         }
+    });
+}
+
+function gestioneTendinaRicerca(){
+    const bottoneCerca = document.getElementById("ricerca");
+    const tendinaRicerca = document.getElementById("tendina_ricerca");
+    const barraRicerca = document.getElementById("barra_ricerca");
+
+    bottoneCerca.addEventListener("click", (e)=>{
+        //impedisco che il click si propaghi al document, che comporterebbe la chiusura della tendina
+        e.stopPropagation();
+        tendinaRicerca.classList.toggle("hidden");
+
+        if(!tendinaRicerca.classList.contains("hidden")){
+            barraRicerca.focus();
+        }
+    })
+
+    //chiudo la tendina se clicco fuori dalla tendina
+    document.addEventListener("click", (e)=>{
+        const isClickInside = tendinaRicerca.contains(e.target);
+        const isClickOnButton = bottoneCerca.contains(e.target);
+
+        // Se il click NON è dentro la tendina E NON è sul bottone, chiudi
+        if (!isClickInside && !isClickOnButton && !tendinaRicerca.classList.contains("hidden")) {
+            tendinaRicerca.classList.add("hidden");
+        }
+    });
+    
+    // Evita che cliccare dentro la tendina la faccia chiudere
+    tendinaRicerca.addEventListener("click", (e) => {
+        e.stopPropagation();
     });
 }
