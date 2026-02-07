@@ -20,6 +20,11 @@ body{
     border-right: 2px solid var(--pitch-dark);
 }
 
+.filtro_recensione{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
 .contenitore_valutazione,
 .contenitore_macrocampo{
     background-color: var(--bg-overlay);

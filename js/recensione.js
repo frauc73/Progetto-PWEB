@@ -68,7 +68,7 @@ function svuotaFormStadio(){
 }
 
 function recuperaStadi(paese){
-    fetch('fetchData.php?action=get_stadi&paese='+paese)
+    fetch('fetchData.php?action=get_stadi&paese='+ encodeURIComponent(paese))
         .then(res => res.json())
         .then(data => {
             const stadio = document.getElementById("stadio");

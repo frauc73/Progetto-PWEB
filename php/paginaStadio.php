@@ -44,6 +44,27 @@
             </aside>
             <section class="bacheca">
                 <h1>Recensioni</h1>
+                <div id="contenitore_filtro_recensione" class="contenitore_filtro_recensione">
+                    <div class="filtro_recensione">
+                        <input type="radio" id="filtro_tutti" name="filtro_recensione" value="tutti" checked>
+                        <label for="filtro_tutti">Tutti</label>
+
+                        <input type="radio" id="filtro_curva" name="filtro_recensione" value="Curva">
+                        <label for="filtro_curva">Curva</label>
+
+                        <input type="radio" id="filtro_distinti" name="filtro_recensione" value="Distinti">
+                        <label for="filtro_distinti">Distinti</label>
+
+                        <input type="radio" id="filtro_tribuna" name="filtro_recensione" value="Tribuna">
+                        <label for="filtro_tribuna">Tribuna</label>
+
+                        <input type="radio" id="filtro_tribuna_autorita" name="filtro_recensione" value="Tribuna Autorità">
+                        <label for="filtro_tribuna_autorita">Tribuna Autorità</label>
+
+                        <input type="radio" id="filtro_settore_ospiti" name="filtro_recensione" value="Settore Ospiti">
+                        <label for="filtro_settore_ospiti">Settore Ospiti</label>
+                    </div>
+                </div>
                 <div id="contenitore_post">
 
                 </div>

@@ -3,13 +3,22 @@ document.addEventListener("DOMContentLoaded", inizializza)
 function inizializza(){
     const nomeStadio = document.body.dataset.nomeStadio;
     if(nomeStadio){
-        riempiBacheca(nomeStadio);
-        calcolaStatistiche(nomeStadio);
+        //di default mostro tutte le recensioni e calcolo le statistiche su tutte le recensioni
+        riempiBacheca(nomeStadio, "tutti");
+        calcolaStatistiche(nomeStadio, "tutti");
     }
+    const filtri = document.querySelectorAll('input[name="filtro_recensione"]');;
+    filtri.forEach(radio => {
+        radio.addEventListener("change", (e) => {
+            // e.target.value conterrà il settore scelto attraverso il radio button
+            riempiBacheca(nomeStadio, e.target.value);
+            calcolaStatistiche(nomeStadio, e.target.value);
+        });
+    });
 }
 
-function riempiBacheca(nomeStadio){
-    fetch("gestionePaginaStadio.php?azione=riempi_bacheca&stadio="+ encodeURIComponent(nomeStadio))
+function riempiBacheca(nomeStadio, settore){
+    fetch("gestionePaginaStadio.php?azione=riempi_bacheca&stadio="+ encodeURIComponent(nomeStadio)+"&settore=" + encodeURIComponent(settore))
         .then(res => res.json())
         .then(data =>{
             const contenitorePost = document.getElementById("contenitore_post");
@@ -23,7 +32,7 @@ function riempiBacheca(nomeStadio){
             
             if(data.length === 0){
                 const testoBachecaVuota = document.createElement("p");
-                testoBachecaVuota.textContent = "Nessuna recensione dello stadio.";
+                testoBachecaVuota.textContent = "Nessuna recensione per quel settore dello stadio.";
                 contenitorePost.appendChild(testoBachecaVuota);
                 return;
             }
@@ -36,8 +45,8 @@ function riempiBacheca(nomeStadio){
         });
 }
 
-function calcolaStatistiche(nomeStadio){
-    fetch("gestionePaginaStadio.php?azione=calcola_statistiche&stadio="+ encodeURIComponent(nomeStadio))
+function calcolaStatistiche(nomeStadio, settore){
+    fetch("gestionePaginaStadio.php?azione=calcola_statistiche&stadio="+ encodeURIComponent(nomeStadio) +"&settore=" + encodeURIComponent(settore))
         .then(res => res.json())
         .then(data =>{
             const contenitoreValutazioni = document.getElementById("contenitore_valutazioni");
@@ -51,7 +60,7 @@ function calcolaStatistiche(nomeStadio){
             
             if(!data.ValutazioneGenerale){
                 const testoBachecaVuota = document.createElement("p");
-                testoBachecaVuota.textContent = "Nessuna recensione dello stadio.";
+                testoBachecaVuota.textContent = "Nessuna recensione per quel settore dello stadio.";
                 contenitoreValutazioni.appendChild(testoBachecaVuota);
                 return;
             }
@@ -143,13 +152,13 @@ function disegnaStatistiche(contenitore, statistiche){
 
         const valutazioneRistorazione = document.createElement("h2");
         if(statistiche.MediaRistorazione){
-            valutazioneRistorazione.textContent = "Servizi igenici: " + parseFloat(statistiche.MediaRistorazione).toFixed(1);
+            valutazioneRistorazione.textContent = "Ristorazione: " + parseFloat(statistiche.MediaRistorazione).toFixed(1);
             contenitoreValutazioneServizi.appendChild(valutazioneRistorazione);
         }
         else{
-            valutazioneRistorazione.textContent = "Servizi igenici:";
+            valutazioneRistorazione.textContent = "Ristorazione:";
             const ristorazioneNull = document.createElement("p");
-            ristorazioneNull.textContent = "Nessuna informazione sui servizi igenici.";
+            ristorazioneNull.textContent = "Nessuna informazione sui servizi di ristorazione.";
             contenitoreValutazioneServizi.appendChild(valutazioneRistorazione);
             contenitoreValutazioneServizi.appendChild(ristorazioneNull);
         }

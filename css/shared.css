@@ -209,6 +209,7 @@ footer{
     padding-bottom: 60px;
 }
 #contenitore_filtro_post{
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
 /*Codice che uso per gestire la dialog su Firefox*/

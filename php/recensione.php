@@ -34,13 +34,13 @@
                         <option value="Distinti">Distinti</option>
                         <option value="Tribuna">Tribuna</option>
                         <option value="Tribuna Autorità">Tribuna Autorità</option>
-                        <option value="Settore Opsiti">Settore Opsiti</option>
+                        <option value="Settore Ospiti">Settore Ospiti</option>
                     </select>
                     <input type="date" name="data" id="data" required class="campo_form_stadio">
                 </form>
             </div>
             <div id="contenitore_recensione" class="hidden">
-                <h2>È il tuo momento! Valuta lo stadio</h2>
+                <h2>È il tuo momento, valuta lo stadio!</h2>
                 <form id="recensione" enctype="multipart/form-data">
                     <!--Visibilità-->
                     <h3>Visibilità:</h3>
