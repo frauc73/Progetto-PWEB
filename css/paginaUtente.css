@@ -35,10 +35,6 @@ body{
     justify-content: end;
 }
 
-#contenitore_statistiche_utente{
-    text-align: center;
-    color: white;
-}
 /*
 #contenitore_foto_profilo{
     height: 300px;
@@ -58,6 +54,54 @@ body{
 .sidebar h2{
     color: white;
 }
+.sidebar p{
+    font-size: 1.5rem;
+    margin: 0;
+}
+#contenitore_notifiche{
+    background-color: var(--bg-overlay);
+    border-radius: 1rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.contenitore_notifica{
+    background-color: var(--bg-overlay);
+    border-radius: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.contenitore_notifica:hover{
+    transform: translateY(-2px);
+    background-color: rgba(240, 240, 240, 0.95); 
+    border-radius: 1rem;
+    border-color: #ccc 
+}
+.contenitore_notifica p{
+    font-size: 1rem;
+}
+#contenitore_statistiche_utente{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+.statistica{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#contenitore_squadra_supportata{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.logo_squadra_supportata,
+.logo_squadra_statitstiche{
+    max-width: 64px;
+}
+
+/*Parte per disegnare la dialog*/
 #contenuto_dialog{
     display: flex;
     flex-direction: column;
@@ -69,8 +113,7 @@ body{
     padding: 1rem;
     margin-bottom: 1rem;
 }
-.logo_squadra_dialog,
-.logo_squadra_statitstiche{
+.logo_squadra_dialog{
     max-width: 200px;
 }
 #bottoni_dialog{
@@ -85,16 +128,4 @@ body{
 #select_foto_profilo{
     margin-bottom: 1rem;
     font-size: large;
-}
-#contenitore_squadra_supportata{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-.logo_squadra_supportata{
-    max-width: 150px;
-}
-.sidebar p{
-    font-size: 3rem;
-    margin: 0;
 }

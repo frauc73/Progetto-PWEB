@@ -6,8 +6,10 @@ function inizializza(){
     const isOwner = document.body.dataset.isOwner === "true";
     const usernameProfilo = document.body.dataset.currentProfileUser;
     const following = document.body.dataset.following === "true";
-    if(isOwner)
+    if(isOwner){
         settaListeners();
+        controlloNotifiche();
+    }
     else
         attivaListenerSegui(following, usernameProfilo);
     //setto il listener per il cambio filtro
@@ -56,6 +58,64 @@ function settaListeners(){
     });
 }
 
+function controlloNotifiche(){
+    fetch("recuperaDatiBacheca.php?azione=recupera_notifiche")
+        .then(res => res.json())
+        .then(data =>{
+            //gestisco la creazione delle notifiche
+            const contenitore = document.getElementById("contenitore_notifiche");
+            contenitore.innerHTML = "";
+
+            //gestisco i messaggi d'errore
+            if(!Array.isArray(data) && data.success === false){
+                alert("Errore: "+ data.message);
+                return;
+            }
+
+            data.forEach(n=> {
+                const contenitoreNotifica = document.createElement("div");
+                contenitoreNotifica.classList.add("contenitore_notifica");
+                contenitore.appendChild(contenitoreNotifica);
+
+                const testoNotifica = document.createElement("p");
+
+                const ancoraNotifica = document.createElement("a");
+                ancoraNotifica.href = "paginaUtente.php?username=" + n.Mittente;
+                ancoraNotifica.textContent = n.Mittente;
+                testoNotifica.appendChild(ancoraNotifica);
+
+                let messaggio = "";
+                if(n.TipoNotifica === "follow")
+                    messaggio = " ha cominciato a seguirti";
+                else if (n.TipoNotifica === "unfollow")
+                    messaggio = " ha smesso di seguirti";
+                testoNotifica.appendChild(document.createTextNode(messaggio));
+
+                contenitoreNotifica.appendChild(testoNotifica);
+
+                //aggiungo il listener per leggere la notifica
+                contenitoreNotifica.addEventListener("click", ()=>{
+                    leggiNotifica(contenitoreNotifica, n.IdNotifica);
+                });
+            });
+        });
+}
+
+function leggiNotifica(contenitoreNotifica, idNotifica){
+    fetch("recuperaDatiBacheca.php?azione=leggi_notifica&idNotifica=" + idNotifica)
+        .then(res =>res.json())
+        .then(data =>{
+            //gestisco i messaggi d'errore
+            if(!Array.isArray(data) && data.success === false){
+                alert("Errore: "+ data.message);
+                return;
+            } else {
+                // se la chiamata ha avuto successo dobbiamo aggiornare il contenitore, nascondendo la notifica
+                contenitoreNotifica.classList.add("hidden");
+            }
+        });
+}
+
 function attivaListenerSegui(following,username){
     if(!following){
         const bottoneFollow = document.getElementById("follow_utente");
@@ -101,12 +161,19 @@ function filtroPost(parametro){
 }
 
 function riempiBacheca(username,isOwner){
-    fetch('recuperaDatiBacheca.php?username=' + username)
+    fetch("recuperaDatiBacheca.php?azione=recupera_post&username=" + encodeURIComponent(username))
         .then(res => res.json())
         .then(data =>{
             //svuoto la bacheca da contenuti precedenti
             const contenitorePost = document.getElementById("contenitore_post");
             contenitorePost.innerHTML = "";
+
+            //gestisco i messaggi d'errore
+            if(!Array.isArray(data) && data.success === false){
+                alert("Errore: "+ data.message);
+                return;
+            }
+
             //recuperiamo i paragrafi delle statistiche da riempire
             const numEventi = document.getElementById("num_eventi");
             const numRecensioni = document.getElementById("num_recensioni_scritte");
@@ -402,6 +469,7 @@ function aggiornaInterfaccia(azione, dati){
         const p = document.getElementById("testo_squadra_supportata");
         p.textContent = dati.get("squadra");
         const logoSquadraSupportata = document.querySelector(".logo_squadra_supportata");
+        logoSquadraSupportata.classList.remove("hidden");
         disegnaLogoSquadra(dati.get("squadra"), logoSquadraSupportata);
     } else if(azione === "descrizione") {
         const p = document.getElementById("testo_descrizione");

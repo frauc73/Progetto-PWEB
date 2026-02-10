@@ -58,6 +58,22 @@ if(isset($followedUser) && isset($azione)){
             $stmtFollowingQuery->bind_param("ss", $loggedUser, $followedUser);
             if($stmtFollowingQuery->execute()){
                 echo json_encode(['success' => true, 'message' => 'Utente seguito!']);
+                //mi occupo di inserire la notifica nel database
+                $queryNotifica = "INSERT INTO Notifiche (Mittente,Destinatario,TipoNotifica) VALUES (?,?,?)";
+                if($stmtQueryNotifica = $connection->prepare($queryNotifica)){
+                    $tipo = "follow";
+                    $stmtQueryNotifica->bind_param("sss", $loggedUser, $followedUser, $tipo);
+                    if(!$stmtQueryNotifica->execute()){
+                        echo json_encode(['success' => false, 'message' => 'Errore nel salvataggio della notifica.']);
+                        die(mysqli_connect_error());
+                        exit();
+                    };
+                    $stmtQueryNotifica->close();
+                } else {
+                    echo json_encode(['success' => false, 'message' => 'Errore nella preparazione della query.']);
+                    die(mysqli_connect_error());
+                    exit();
+                }
             } else {
                 echo json_encode(['success' => false, 'message' => 'Errore nell\'esecuzione della query.']);
                 die(mysqli_connect_error());
@@ -69,6 +85,7 @@ if(isset($followedUser) && isset($azione)){
             exit();
         }
         $stmtFollowingQuery->close();
+        
     } else if ($azione === "unfollow") {
         //qui il controllo è effettuato dalla funzione affected_rows, che mi dice quante righe della tabella sono state modificate
         //0? allora l'utente loggato non lo seguiva
@@ -79,6 +96,22 @@ if(isset($followedUser) && isset($azione)){
             if($stmtUnfollowingQuery->execute()){
                 if($stmtUnfollowingQuery->affected_rows > 0){
                     echo json_encode(['success' => true, 'message' => 'Hai smesso di seguire l\'utente.']);
+                    //mi occupo di inserire la notifica nel database
+                    $queryNotifica = "INSERT INTO Notifiche (Mittente,Destinatario,TipoNotifica) VALUES (?,?,?)";
+                    if($stmtQueryNotifica = $connection->prepare($queryNotifica)){
+                        $tipo = "unfollow";
+                        $stmtQueryNotifica->bind_param("sss", $loggedUser, $followedUser, $tipo);
+                        if(!$stmtQueryNotifica->execute()){
+                            echo json_encode(['success' => false, 'message' => 'Errore nel salvataggio della notifica.']);
+                            die(mysqli_connect_error());
+                            exit();
+                        };
+                        $stmtQueryNotifica->close();
+                    } else {
+                        echo json_encode(['success' => false, 'message' => 'Errore nella preparazione della query.']);
+                        die(mysqli_connect_error());
+                        exit();
+                    }
                 } else {
                     echo json_encode(['success' => true, 'message' => 'Non seguivi l\'utente.']);
                 }

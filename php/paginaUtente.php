@@ -140,16 +140,8 @@
                 </div>
                 <h1 class="usernameUtente"><?php echo ($profileUser) ?></h1>
                 <h2 class="nomeCognomeUtente"><?php echo ($nomeUtente . ' ' . $congomeUtente) ?></h2>
-                <div id="contenitore_statistiche_utente">
-                    <h3>Eventi</h3>
-                    <p id="num_eventi"></p>
-                    <h3>Recensioni scritte</h3>
-                    <p id="num_recensioni_scritte"></p>
-                    <h3>Stadi visitati</h3>
-                    <p id="num_stadi_visitati"></p>
-                    <h3>Squadra più vista</h3>
-                    <p id="squadra_piu_vista"></p>
-                    <img src="../src/posts/Default.png" alt="Logo squadra più vista" class="logo_squadra_statitstiche hidden" id="logo_squadra_statitstiche">
+                <div id="contenitore_notifiche">
+                    
                 </div>
             </aside>
             <section class="bacheca">
@@ -181,13 +173,32 @@
                     <h2>Squadra Supportata</h2>
                     <div id="contenitore_squadra_supportata">
                         <p id="testo_squadra_supportata"><?php echo $squadraSupportata ? $squadraSupportata : "Nessuna squadra supportata" ?></p>
-                        <?php if($pathLogoSquadra): ?>
-                            <img src="<?php echo $pathLogoSquadra ?>" alt="Logo squadra supportata" class="logo_squadra_supportata">
-                        <?php endif;?>
+                        <img src="<?php echo $pathLogoSquadra ? $pathLogoSquadra : "../src/posts/default.png" ?>" alt="Logo squadra supportata" class="logo_squadra_supportata <?php echo $pathLogoSquadra ? "" : "hidden" ?>">
                     </div>
                     <?php if($isOwner): ?>
                         <button id="modifica_squadra" class="bottone_pagina_utente">Modifica</button>
                     <?php endif;?>
+                </div>
+                <div id="contenitore_statistiche_utente">
+                    <div class="statistica">
+                        <h3>Eventi</h3>
+                        <p id="num_eventi"></p>
+                    </div>
+                    <div class="statistica">
+                        <h3>Recensioni</h3>
+                        <p id="num_recensioni_scritte"></p>
+                    </div>
+                    <div class="statistica">
+                        <h3>Stadi visitati</h3>
+                        <p id="num_stadi_visitati"></p>
+                    </div>
+                    <div class="statistica">
+                        <h3>Squadra più vista</h3>
+                        <div>
+                            <p id="squadra_piu_vista"></p>
+                            <img src="../src/posts/Default.png" alt="Logo squadra più vista" class="logo_squadra_statitstiche hidden" id="logo_squadra_statitstiche">
+                        </div>
+                    </div>
                 </div>
             </aside>
             <?php if($isOwner): ?>

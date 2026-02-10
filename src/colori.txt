@@ -190,5 +190,9 @@ Valuta di inserire un modo per aggiungere i post dalla propria pagina
 Reinderizza l'utente alla pagina dopo che ha inviato la recensione. FATTO
 Rifletti su un meccanismo di notifiche quando qualcuno ti comincia a seguire
 
-Idea: filtra le recensioni per settore
+Idea: filtra le recensioni per settore FATTO
 tipo se l'utente sceglie Settore Ospiti sia recensioni che valutazioni sono relative al settore Ospiti
+
+Manca da completare il meccanismo delle notifiche: 
+1. Disegnare le notifiche quando ci sono. FATTO
+2. Eliminare quando vengono cliccate. FATTO

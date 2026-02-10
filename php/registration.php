@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         //controlliamo gli input anche lato server
         $regex_nome_cognome = "/^[\p{L}\s'-]{2,50}$/u";
         $regex_username = "/[A-Za-z0-9_]{3,16}$/";
-        $regex_psw = "/[A-Za-z0-9_$!%@]{4,10}$/";
+        $regex_psw = "/[A-Za-z0-9_$!%@]{4,}$/";
         $regex_email = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
         if(!preg_match($regex_nome_cognome, $nome) || !preg_match($regex_nome_cognome, $cognome) || !preg_match($regex_username, $username) || !preg_match($regex_psw, $password) || !preg_match($regex_email, $email)){
             $errore = true;
@@ -28,71 +28,66 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
             //ora devo controllare se l'username è già esistente, ed eventualmente bloccare la creazione dell'utente
             $controllo_username = "select * from Users where Username=?";
-            if($statement1 = mysqli_prepare($connection, $controllo_username)){
-                //preparo ed eseguo la query
-                mysqli_stmt_bind_param($statement1, 's', $username);
-                mysqli_stmt_execute($statement1);
-                //controllo il risultato
-                $result1 = mysqli_stmt_get_result($statement1);
-                if(mysqli_num_rows($result1) != 0){
+            if($statement1 = $connection->prepare($controllo_username)){
+                $statement1->bind_param('s', $username);
+                $statement1->execute();
+                $result1 = $statement1->get_result();
+                if($result1->num_rows != 0){
                     //in questo caso esiste un utente con quell'username
                     $username_utilizzato = true;
                     //pulisco la memoria dal result set e chiudo la connessione con il database
-                    mysqli_free_result($result1);
-                    mysqli_close($connection);
+                    $result1->free_result();
                 } else {
                     //ora dobbiamo controllare se la mail inserita non è associata a qualcun altro utente, e anche qui in caso contrario bloccare la creazione dell'utente
                     $controllo_mail = "select * from Users where Email=?";
-                    if($statement_mail = mysqli_prepare($connection, $controllo_mail)){
-                        //preparo ed eseguo la query
-                        mysqli_stmt_bind_param($statement_mail, 's', $email);
-                        mysqli_stmt_execute($statement_mail);
-                        //controllo il risultato
-                        $result_mail = mysqli_stmt_get_result($statement_mail);
-                        if(mysqli_num_rows($result_mail) != 0){
+                    if($statement_mail = $connection->prepare($controllo_mail)){
+                        $statement_mail->bind_param('s', $email);
+                        $statement_mail->execute();
+                        $result_mail = $statement_mail->get_result();
+                        if($result_mail->num_rows != 0){
                             //in questo caso esiste un utente con quell'username
                             $mail_utilizzata = true;
                             //pulisco la memoria dal result set e chiudo la connessione con il database
-                            mysqli_free_result($result_mail);
-                            mysqli_close($connection);
+                            $result_mail->free_result();
                         } else {
                             //arrivati qui dobbiamo inserire l'utente nel database
                             //per una questione di sicurezza scelgo di utilizzare le transazioni 
                             //disabilito l'autocommit
-                            mysqli_begin_transaction($connection);
+                            $connection->begin_transaction();
                             $inserisci_utente = "insert into Users (Username, Password, Nome, Cognome, Email, PathFotoProfilo) values (?, ?, ?, ?, ?, ?)";
-                            if($statement2 = mysqli_prepare($connection, $inserisci_utente)){
+                            if($statement2 = $connection->prepare($inserisci_utente)){
                                 //genero la password
                                 $hash = password_hash($password,PASSWORD_BCRYPT);
                                 //preparo la foto di default
                                 $pathFotoProfilo = "../src/profile_pic/default.png";
-                                //preparo la query 
-                                mysqli_stmt_bind_param($statement2, 'ssssss', $username, $hash, $nome, $cognome, $email,$pathFotoProfilo);
+                                //preparo la query
+                                $statement2->bind_param('ssssss', $username, $hash, $nome, $cognome, $email,$pathFotoProfilo);
                                 //eseguo la query
-                                if(mysqli_stmt_execute($statement2)){
+                                if($statement2->execute()){
                                     //confermo la transazione
-                                    mysqli_commit($connection); 
+                                    $connection->commit();
                                     //pulisco la memoria dal result set e chiudo la connessione con il database
-                                    mysqli_close($connection);
+                                    $connection->close();
+                                    echo "<script>alert('Registrazione completata con successo!')</script>";
                                     //indirizzo l'utente verso la pagina per accedere
                                     header("location: login.php");
                                 } else {
                                     //annullo tutto in caso di errore
-                                    mysqli_rollback($connection);
+                                    $connection->rollback();
                                     echo "<script>alert('Errore durante la registrazione.')</script>";
-                                    //pulisco la memoria dal result set e chiudo la connessione con il database
-                                    mysqli_close($connection);
                                 }
                             }
                         }
                     }
                 }
             }
+            $connection->close();
         }
     } else {
         echo "<script>window.alert('Riempi tutti i campi richiesti')</script>";
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="it">
@@ -127,8 +122,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                     </tr>
                     <tr>
                         <td>
-                            <input type="text" name="password" id="password" placeholder="Password" required pattern="[A-Za-z0-9_$!%@]{4,10}">
-                            <small>Da 4 a 10 caratteri, ammessi lettere, numeri e i simboli _$!%@</small>
+                            <input type="text" name="password" id="password" placeholder="Password" required pattern="[A-Za-z0-9_$!%@]{4,}">
+                            <small>Minimo 4 caratteri, ammessi lettere, numeri e i simboli _$!%@</small>
                         </td>    
                     </tr>
                     <?php

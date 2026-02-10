@@ -8,7 +8,7 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
 
     //controllo l'input anche lato server
     $regex_username = "/[A-Za-z0-9_]{3,16}/";
-    $regex_psw = "/[A-Za-z0-9_$!%@]{4,10}/";
+    $regex_psw = "/[A-Za-z0-9_$!%@]{4,}/";
     if(preg_match($regex_psw, $password) && preg_match($regex_username,$username)){
         //se entro in questo ramo devo controllare se le credenziali sono associate ad un utente esistente
         //per fare questo devo quindi accedere al database, quindi comincio con il collegarmi
@@ -16,25 +16,20 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
         $connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
         if(mysqli_connect_errno()){
             die(mysqli_connect_error());
+            exit();
         }
-        //arrivato qui sono sicuro che la connessione al database è andata a buon fine
-        //preparo la query
         $sql = "select * from Users where Username=?";
-        if($statement = mysqli_prepare($connection, $sql)){
-            //preparo la query
-            mysqli_stmt_bind_param($statement, "s", $username);
-            //la eseguo
-            mysqli_stmt_execute($statement);
-            //controllo il risultato
-            $result = mysqli_stmt_get_result($statement);
-            if(mysqli_num_rows($result) == 0){
+        if($statement = $connection->prepare($sql)){
+            $statement->bind_param("s", $username);
+            $statement->execute();
+            $result = $statement->get_result();
+            if($result->num_rows == 0){
                 //pulisco la memoria dal result set e chiudo la connessione con il database
-                mysqli_free_result($result);
-                mysqli_close($connection);
+                $result->free_result();
                 $errore = true;
             } else {
                 //l'username è corretto, ora controlliamo la password
-                $row = mysqli_fetch_assoc($result);
+                $row = $result->fetch_assoc();
                 $hash = $row['Password'];
                 if(password_verify($password, $hash)){
                     //le credenziali sono corrette, l'utente può accedere alla sua homepage
@@ -49,21 +44,20 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
                     $_SESSION["PathFotoProfiloUtente"] = $row['PathFotoProfilo'];
 
                     //pulisco la memoria dal result set e chiudo la connessione con il database
-                    mysqli_free_result($result);
-                    mysqli_close($connection);
+                    $result->free_result();
                     //indirizzo l'utente alla sua homepage
                     header("location: ../index.php");
                 } else {
                     //pulisco la memoria dal result set e chiudo la connessione con il database
-                    mysqli_free_result($result);
-                    mysqli_close($connection);
+                    $result->free_result();
                     $errore = true;
-                }
-                
+                } 
             }
         } else {
             die(mysqli_connect_error());
+            exit();
         }
+        $connection->close();
     } else {
         echo "<script>window.alert('Il formato inserito non è corretto')</script>";
     }
@@ -90,7 +84,7 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
                 </div>
                 <div class="campo">
                     <label for="password"><img src="../src/icons/key.png" alt="logo_password"></label>
-                    <input type="text" name="password" id="password" placeholder="Password" pattern="[A-Za-z0-9_$!%@]{4,10}">
+                    <input type="text" name="password" id="password" placeholder="Password" pattern="[A-Za-z0-9_$!%@]{4,}">
                 </div>
                 <?php
                     if($errore)
