@@ -218,49 +218,6 @@ function mostraAnteprimaFoto(e){
 
 function inviaForm(e){
   e.preventDefault();
-  //prima di inviare il form controllo gli input 
-  const casa = document.getElementById("squadra_casa");
-  if(!casa.validity.valid){
-    alert("Inserisci la squadra di casa");
-    return;
-  }
-  const ospite = document.getElementById("squadra_ospite");
-  if(!ospite.validity.valid){
-    alert("Inserisci la squadra ospite");
-    return;
-  }
-  const punteggioCasa = document.getElementById("punteggio_casa");
-  const punteggioOspite = document.getElementById("punteggio_ospite");
-  if(!punteggioCasa.validity.valid){
-    alert("Inserisci il punteggio della squadra di casa");
-    return;
-  }
-  if(!punteggioOspite.validity.valid){
-    alert("Inserisci il punteggio della squadra ospite");
-    return;
-  }
-  if(punteggioCasa.value < 0 || punteggioOspite.value < 0){
-    alert("Inserisci un punteggio valido");
-    return;
-  }
-  const data = document.getElementById("data_partita");
-  if(!data.validity.valid){
-    alert("Inserisci la data");
-    return;
-  } else {
-    const dataSelezionata = new Date(data.value);
-    const today = new Date();
-    today.setHours(0,0,0,0);
-    if (dataSelezionata > today) {
-      alert("Non puoi inserire partite future");
-      return;
-    }
-  }
-  const caption = document.getElementById("caption");
-  if(caption.value.trim() == ""){
-    alert("Inserisci una caption");
-    return;
-  }
   const formData = new FormData(e.target);
   fetch("setEvento.php", { method: 'POST', body: formData })
     .then(res => res.json())
@@ -270,6 +227,8 @@ function inviaForm(e){
         e.target.reset();
         //reinderizzo l'utente alla sua homepage
         window.location.href = "../index.php";
+      } else {
+        alert("Errore: " + data.message);
       }
     });
   

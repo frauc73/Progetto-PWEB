@@ -2,19 +2,14 @@
 require_once("start_session.php");
 
 header('Content-Type: application/json');
-require_once("dbaccess.php");
 
 if(!isset($_SESSION["Username"])){
     echo json_encode(['success' => false, 'message' => 'Utente non loggato.']);
     exit();
 }
 
-$connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-if(mysqli_connect_errno()){
-    echo json_encode(['success' => false, 'message' => 'Errore di connessione al database']);
-    die(mysqli_connect_error());
-    exit();
-}
+require_once("dbaccess.php");
+$connection = getDbConnection();
 
 $utente = $_SESSION["Username"];
 $squadraCasa = $_POST['squadra_casa'];
@@ -24,6 +19,18 @@ $punteggioOspite = intval($_POST['punteggio_ospite']);
 $dataPartita = $_POST['data_partita'];
 $caption = $_POST['caption'];
 
+//controllo le squadre
+if ($squadraCasa === $squadraOspite) {
+    echo json_encode(['success' => false, 'message' => 'La squadra di casa e ospite non possono essere uguali.']);
+    $connection->close();
+    exit();
+}
+//controllo i punteggi
+if ($punteggioCasa < 0 || $punteggioOspite < 0) {
+    echo json_encode(['success' => false, 'message' => 'I punteggi non possono essere negativi.']);
+    $connection->close();
+    exit();
+}
 //gestisco la data
 if (empty($dataPartita)) {
     echo json_encode(['success' => false, 'message' => 'Inserire la data della partita.']);

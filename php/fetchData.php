@@ -2,12 +2,8 @@
 header('Content-Type: application/json');
 
 require_once("dbaccess.php");
-$connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-if(mysqli_connect_errno()){
-    echo json_encode(['error' => 'Connessione fallita']);
-    die(mysqli_connect_error());
-    exit();
-}
+$connection = getDbConnection();
+
 
 // Determina il tipo di richiesta
 $action = isset($_GET['action']) ? trim($_GET['action']) : '';
