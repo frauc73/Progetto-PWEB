@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 require_once("dbaccess.php");
 
 if(!isset($_SESSION["Username"])){
-    echo json_encode(['success' => false, 'message' => 'Utente non utenticato.']);
+    echo json_encode(['success' => false, 'message' => 'Utente non loggato.']);
     exit();
 }
 

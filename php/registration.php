@@ -12,8 +12,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     
         //controlliamo gli input anche lato server
         $regex_nome_cognome = "/^[\p{L}\s'-]{2,50}$/u";
-        $regex_username = "/[A-Za-z0-9_]{3,16}$/";
-        $regex_psw = "/[A-Za-z0-9_$!%@]{4,}$/";
+        $regex_username = "/^[A-Za-z0-9_]{3,16}$/";
+        $regex_psw = "/^[A-Za-z0-9_$!%@]{4,}$/";
         $regex_email = "/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
         if(!preg_match($regex_nome_cognome, $nome) || !preg_match($regex_nome_cognome, $cognome) || !preg_match($regex_username, $username) || !preg_match($regex_psw, $password) || !preg_match($regex_email, $email)){
             $errore = true;
@@ -21,10 +21,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
             //qui i dati hanno il formato richiesto, posso quindi andare avanti
             //mi connetto al db
             require_once("dbaccess.php");
-            $connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-            if(mysqli_connect_errno()){
-                die(mysqli_connect_error());
-            }
+            $connection = getDbConnection();
     
             //ora devo controllare se l'username è già esistente, ed eventualmente bloccare la creazione dell'utente
             $controllo_username = "select * from Users where Username=?";
@@ -99,7 +96,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <link rel="icon" href="../src/images/logo_sito.png" type="image/ico">
         <script src="../js/registration.js"></script>
     </head>
-    <body onload="init()">
+    <body>
         <div id="form-container">
             <img src="../src/images/logo_sito.png" alt="logo_sito" id="logo_sito">
             <form action="registration.php" method="POST">

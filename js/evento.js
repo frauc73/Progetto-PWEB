@@ -91,8 +91,8 @@ function paeseSelezionato(paese){
 }
 
 function recuperaSquadre(paese){
-  fetch('fetchData.php?action=get_squadre&paese=' + paese)      
-      .then(res => res.json())      //ricevo la risposta json
+  fetch('fetchData.php?action=get_squadre&paese=' + encodeURIComponent(paese))      
+      .then(res => res.json())      
       .then(data => {
         const casa = document.getElementById("squadra_casa");
         const ospite = document.getElementById("squadra_ospite");
@@ -120,14 +120,16 @@ function mostraSquadra(e, tipo){
         document.getElementById("stadio").textContent = "";
         if (ultimaSquadraCasa !== "") {
           const daSbloccare = document.querySelector(`#squadra_ospite option[value="${ultimaSquadraCasa}"]`);
-          if(daSbloccare) daSbloccare.disabled = false;
+          if(daSbloccare) 
+            daSbloccare.disabled = false;
         }
         ultimaSquadraCasa = "";
       } 
       else {
         if (ultimaSquadraOspite !== "") {
           const daSbloccare = document.querySelector(`#squadra_casa option[value="${ultimaSquadraOspite}"]`);
-          if(daSbloccare) daSbloccare.disabled = false;
+          if(daSbloccare) 
+            daSbloccare.disabled = false;
         }
         ultimaSquadraOspite = "";
       }
@@ -208,7 +210,7 @@ function mostraAnteprimaFoto(e){
     };
     reader.readAsDataURL(fileInput.files[0]);
   } else {
-    // Se l'utente deseleziona l'immagine, nascondo l'anteprima o rimetto un placeholder
+    // Se l'utente deseleziona l'immagine, nascondo l'anteprima e rimetto un placeholder
     anteprima.src = "../src/posts/Default.png";
     anteprima.classList.toggle("hidden");
   }

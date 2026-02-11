@@ -7,17 +7,14 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
     $password = $_POST['password'];
 
     //controllo l'input anche lato server
-    $regex_username = "/[A-Za-z0-9_]{3,16}/";
-    $regex_psw = "/[A-Za-z0-9_$!%@]{4,}/";
+    $regex_username = "/^[A-Za-z0-9_]{3,16}$/";
+    $regex_psw = "/^[A-Za-z0-9_$!%@]{4,}$/";
     if(preg_match($regex_psw, $password) && preg_match($regex_username,$username)){
         //se entro in questo ramo devo controllare se le credenziali sono associate ad un utente esistente
         //per fare questo devo quindi accedere al database, quindi comincio con il collegarmi
         require_once("dbaccess.php");
-        $connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-        if(mysqli_connect_errno()){
-            die(mysqli_connect_error());
-            exit();
-        }
+        $connection = getDbConnection();
+
         $sql = "select * from Users where Username=?";
         if($statement = $connection->prepare($sql)){
             $statement->bind_param("s", $username);
@@ -59,7 +56,7 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
         }
         $connection->close();
     } else {
-        echo "<script>window.alert('Il formato inserito non è corretto')</script>";
+        $errore_formato = true;
     }
 
 }
@@ -89,6 +86,8 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
                 <?php
                     if($errore)
                         echo '<p id="error-msg">Email o password non corretta.</p>';
+                    if($errore_formato)
+                        echo '<p id="error-msg">Formato non corretto.</p>';
                 ?>
                 <button type="submit" id="login" name="login">Login</button>
             </form>

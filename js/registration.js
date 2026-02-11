@@ -1,7 +1,10 @@
-function init(){
+document.addEventListener("DOMContentLoaded", inizializza);
+
+function inizializza(){
     const bottone = document.getElementById("registration");
     bottone.addEventListener("click", invia);
 }
+
 function invia(e){
     const nome = document.getElementById("nome");
     const cognome = document.getElementById("cognome");

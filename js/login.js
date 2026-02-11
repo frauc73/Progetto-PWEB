@@ -1,8 +1,10 @@
-document.addEventListener("DOMContentLoaded", init)
-function init(){
+document.addEventListener("DOMContentLoaded", inizializza)
+
+function inizializza(){
     const bottone = document.getElementById("login");
     bottone.addEventListener("click", invia);
 }
+
 function invia(e){
     const username = document.getElementById("username");
     const password = document.getElementById("password");
