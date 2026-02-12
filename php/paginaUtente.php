@@ -15,10 +15,7 @@
         $isOwner = ($loggedUser === $profileUser);
         //mi connetto al database
         require_once("dbaccess.php");
-        $connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-        if(mysqli_connect_errno()){
-            die(mysqli_connect_error());
-        }
+        $connection = getDbConnection();
         if(!$isOwner){
             $fotoProfiloUtenteLoggato = $_SESSION['PathFotoProfiloUtente'] ?? null;
         }
@@ -138,8 +135,8 @@
                         <?php endif;?>
                     </div>
                 </div>
-                <h1 class="usernameUtente"><?php echo ($profileUser) ?></h1>
-                <h2 class="nomeCognomeUtente"><?php echo ($nomeUtente . ' ' . $congomeUtente) ?></h2>
+                <h1 class="usernameUtente"><?php echo htmlspecialchars($profileUser) ?></h1>
+                <h2 class="nomeCognomeUtente"><?php echo htmlspecialchars($nomeUtente . ' ' . $congomeUtente) ?></h2>
                 <div id="contenitore_notifiche">
                     
                 </div>
@@ -164,7 +161,7 @@
             <aside class="sidebar right-sidebar">
                 <div>
                     <h2>Descrizione Profilo</h2>
-                    <p id="testo_descrizione"><?php echo $descrizioneProfilo ? $descrizioneProfilo : "Nessuna descrizione presente" ?></p>
+                    <p id="testo_descrizione"><?php echo $descrizioneProfilo ? htmlspecialchars($descrizioneProfilo) : "Nessuna descrizione presente" ?></p>
                     <?php if($isOwner): ?>
                         <button id="modifica_descrizione" class="bottone_pagina_utente">Modifica</button>
                     <?php endif;?>
@@ -172,7 +169,7 @@
                 <div>
                     <h2>Squadra Supportata</h2>
                     <div id="contenitore_squadra_supportata">
-                        <p id="testo_squadra_supportata"><?php echo $squadraSupportata ? $squadraSupportata : "Nessuna squadra supportata" ?></p>
+                        <p id="testo_squadra_supportata"><?php echo $squadraSupportata ? htmlspecialchars($squadraSupportata) : "Nessuna squadra supportata" ?></p>
                         <img src="<?php echo $pathLogoSquadra ? $pathLogoSquadra : "../src/posts/default.png" ?>" alt="Logo squadra supportata" class="logo_squadra_supportata <?php echo $pathLogoSquadra ? "" : "hidden" ?>">
                     </div>
                     <?php if($isOwner): ?>

@@ -19,12 +19,7 @@ if ($loggedUser === $followedUser) {
 }
 
 require_once("dbaccess.php");
-$connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-if(mysqli_connect_errno()){
-    echo json_encode(['error' => 'Connessione fallita']);
-    echo json_encode(die(mysqli_connect_error()));
-    exit();
-}
+$connection = getDbConnection();
 
 if(isset($followedUser) && isset($azione)){
     if($azione === "follow"){

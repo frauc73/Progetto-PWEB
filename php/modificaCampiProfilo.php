@@ -1,7 +1,6 @@
 <?php
 require_once("start_session.php");
 header('Content-Type: application/json');
-require_once("dbaccess.php");
 
 if(!isset($_SESSION["Username"])){
     echo json_encode(['success' => false, 'message' => 'Utente non utenticato.']);
@@ -23,12 +22,8 @@ if(!isset($utente) || !isset($azione)){
     exit();
 }
 
-$connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-if(mysqli_connect_errno()){
-    echo json_encode(['success' => false, 'message' => 'Errore di connessione al database']);
-    die(mysqli_connect_error());
-    exit();
-}
+require_once("dbaccess.php");
+$connection = getDbConnection();
 
 if($azione == "foto_profilo"){
     if (isset($_FILES['foto_profilo']) && $_FILES['foto_profilo']['error'] === UPLOAD_ERR_OK){
@@ -46,9 +41,15 @@ if($azione == "foto_profilo"){
                     $resultElimina = $stmtEliminaFotoProfilo->get_result();
                     if($rowVecchia = $resultElimina->fetch_assoc()){
                         $vecchiaFoto = $rowVecchia['PathFotoProfilo'];
-                        if ($vecchiaFoto && file_exists($vecchiaFoto)) {
-                            //Cancello il file fisico
-                            unlink($vecchiaFoto);
+                        if ($vecchiaFoto) {
+                            //estraggo il nome del file
+                            $nomeVecchiaFoto = basename($vecchiaFoto);
+                            //ricostruisco il path fisico
+                            $pathVecchiaFoto = dirname(__DIR__) . "/src/profile_pic/" . $nomeVecchiaFoto;
+                            if($nomeVecchiaFoto != "default.png" && file_exists($pathVecchiaFoto)){
+                                //Cancello il file fisico
+                                unlink($pathVecchiaFoto);
+                            }
                         }
                     }
                     $resultElimina->free_result();

@@ -18,7 +18,7 @@ if(empty($_POST['stadio']) || empty($_POST['settore'] || empty($_POST['data'])) 
 }
 
 //formato della tabella nel database:
-//Recensioni(IdRecensione,TimeStampRecensione,Username,Stadio,Settore,DataRecensione,VotoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione)
+//Recensioni(IdRecensione,TimeStampPost,Username,Stadio,Settore,DataRecensione,VotoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione)
 //recupero gli input dell'utente e i parametri facoltativi se mancano li metto a null
 $utente = $_SESSION["Username"];
 $stadio = $_POST['stadio'];
