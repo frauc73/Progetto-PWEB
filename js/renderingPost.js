@@ -57,6 +57,19 @@ function disegnaEvento(post, isOwner, mostraUtente = false, usernameUtente = "" 
     nomeSquadraOspite.classList.add("nome_squadra");
     squadraOspite.appendChild(nomeSquadraOspite);
 
+
+    const contenitoreSD = document.createElement("div");
+    contenitoreSD.classList.add("contenitore_SD");
+    contenitorePF.appendChild(contenitoreSD);
+
+    const contenitoreStadio = document.createElement("div");
+    contenitoreSD.appendChild(contenitoreStadio);
+
+    const h3Stadio = document.createElement("h3");
+    h3Stadio.classList.add("titolo_p");
+    h3Stadio.textContent = "Stadio";
+    contenitoreStadio.appendChild(h3Stadio);
+
     if(!paginaStadio){
         const ancoraStadio = document.createElement("a");
         //costruisco il path in maniera diversa se mi trovo in homepage
@@ -64,25 +77,39 @@ function disegnaEvento(post, isOwner, mostraUtente = false, usernameUtente = "" 
             ancoraStadio.href = "./php/paginaStadio.php?stadio=" + encodeURIComponent(post.NomeStadio);
         else
             ancoraStadio.href = "paginaStadio.php?stadio=" + encodeURIComponent(post.NomeStadio);
-        contenitorePartita.appendChild(ancoraStadio);
+        contenitoreStadio.appendChild(ancoraStadio);
         const nomeStadio = document.createElement("p");
         nomeStadio.textContent = post.NomeStadio;
         ancoraStadio.appendChild(nomeStadio);
     } else {
         const nomeStadio = document.createElement("p");
         nomeStadio.textContent = post.NomeStadio;
-        contenitorePartita.appendChild(nomeStadio);
+        contenitoreStadio.appendChild(nomeStadio);
     }
+
+    const contenitoreDataPartita = document.createElement("div");
+    contenitoreSD.appendChild(contenitoreDataPartita);
+
+    const h3DataPartita = document.createElement("h3");
+    h3DataPartita.classList.add("titolo_p");
+    h3DataPartita.textContent = "Data partita";
+    contenitoreDataPartita.appendChild(h3DataPartita);
 
     const dataPartita = document.createElement("p");
     dataPartita.textContent = post.DataMatch;
-    contenitorePartita.appendChild(dataPartita);
+    contenitoreDataPartita.appendChild(dataPartita);
 
-    const contenitoreFotoRicordo = document.createElement("div");
-    contenitoreFotoRicordo.classList.add("contenitore_foto_ricordo");
-    contenitorePF.appendChild(contenitoreFotoRicordo);
 
     if(post.PathFotoRicordo){
+        const contenitoreFotoRicordo = document.createElement("div");
+        contenitoreFotoRicordo.classList.add("contenitore_foto_ricordo");
+        contenitorePF.appendChild(contenitoreFotoRicordo);
+
+        const h3FotoRicordo = document.createElement("h3");
+        h3FotoRicordo.classList.add("titolo_p");
+        h3FotoRicordo.textContent = "Foto ricordo";
+        contenitoreFotoRicordo.appendChild(h3FotoRicordo);
+
         const fotoRicordo = document.createElement("img");
         if(homepage)
             fotoRicordo.src = "./" + post.PathFotoRicordo;
@@ -96,6 +123,11 @@ function disegnaEvento(post, isOwner, mostraUtente = false, usernameUtente = "" 
     const contenitoreDescrizione = document.createElement("div");
     contenitoreDescrizione.classList.add("contenitore_descrizione");
     contenitoreEvento.appendChild(contenitoreDescrizione);
+
+    const h3Descrizione = document.createElement("h3");
+    h3Descrizione.classList.add("titolo_p");
+    h3Descrizione.textContent = "Descrizione";
+    contenitoreDescrizione.appendChild(h3Descrizione);
 
     const descrizione = document.createElement("p");
     descrizione.textContent = post.DescrizionePost;
@@ -126,24 +158,49 @@ function disegnaRecensione(post, isOwner, utente = false, mostraUtente = false, 
     //utente deve essere true nei rendering delle bacheche degli utenti (homepage e paginaUtente)
     //deve essere false nei rendering delle pagine per gli Stadi
     if(utente){
+        const contenitoreStadio = document.createElement("div");
+        contenitoreSD.appendChild(contenitoreStadio);
+
+        const h3NomeStadio = document.createElement("h3");
+        h3NomeStadio.classList.add("titolo_p");
+        h3NomeStadio.textContent = "Stadio";
+        contenitoreStadio.appendChild(h3NomeStadio);
+
         const ancoraStadio = document.createElement("a");
         if(homepage)
             ancoraStadio.href = "./php/paginaStadio.php?stadio=" + encodeURIComponent(post.Stadio);
         else
             ancoraStadio.href = "paginaStadio.php?stadio=" + encodeURIComponent(post.Stadio);
-        contenitoreSD.appendChild(ancoraStadio);
+        contenitoreStadio.appendChild(ancoraStadio);
+
         const nomeStadio = document.createElement("p");
         nomeStadio.textContent = post.Stadio;
         ancoraStadio.appendChild(nomeStadio);
     }
 
+    const contenitoreSettore = document.createElement("div");
+    contenitoreSD.appendChild(contenitoreSettore);
+
+    const h3Settore = document.createElement("h3");
+    h3Settore.classList.add("titolo_p");
+    h3Settore.textContent = "Settore";
+    contenitoreSettore.appendChild(h3Settore);
+
     const settore = document.createElement("p");
     settore.textContent = post.Settore;
-    contenitoreSD.appendChild(settore);
+    contenitoreSettore.appendChild(settore);
+
+    const contenitoreDataRecensione = document.createElement("div");
+    contenitoreSD.appendChild(contenitoreDataRecensione);
+
+    const h3DataRecensione = document.createElement("h3");
+    h3DataRecensione.classList.add("titolo_p");
+    h3DataRecensione.textContent = "Data recensione";
+    contenitoreDataRecensione.appendChild(h3DataRecensione);
 
     const dataRecensione = document.createElement("p");
     dataRecensione.textContent = post.DataRecensione;
-    contenitoreSD.appendChild(dataRecensione);
+    contenitoreDataRecensione.appendChild(dataRecensione);
 
     const contenitoreVoti = document.createElement("div");
     contenitoreVoti.classList.add("contenitore_voti");
@@ -225,6 +282,22 @@ function disegnaRecensione(post, isOwner, utente = false, mostraUtente = false, 
     servizi.appendChild(h3Ristorazione);
     const votoRistorazione = disegnaVoto("ristorazione", post.VotoRistorazione, homepage);
     servizi.appendChild(votoRistorazione);
+
+    if(post.Descrizione){
+        const contenitoreDescrizione = document.createElement("div");
+        contenitoreDescrizione.classList.add("contenitore_descrizione");
+        contenitoreRecensione.appendChild(contenitoreDescrizione);
+
+        const h3Descrizione = document.createElement("h3");
+        h3Descrizione.classList.add("titolo_p");
+        h3Descrizione.textContent = "Descrizione";
+        contenitoreDescrizione.appendChild(h3Descrizione);
+
+        const descrizioneRecensione = document.createElement("p");
+        descrizioneRecensione.textContent = post.Descrizione;
+        contenitoreDescrizione.appendChild(descrizioneRecensione);
+    }
+
 
     return contenitoreRecensione;
 }

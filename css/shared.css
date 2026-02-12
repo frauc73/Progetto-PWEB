@@ -239,6 +239,7 @@ h1,h2{
 .ancora_utente{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 /*Stile per gli ancor*/

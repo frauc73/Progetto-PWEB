@@ -2,20 +2,14 @@
 require_once("start_session.php");
 
 header('Content-Type: application/json');
-require_once("dbaccess.php");
 
 if(!isset($_SESSION["Username"])){
     echo json_encode(['success' => false, 'message' => 'Utente non utenticato.']);
     exit();
 }
 
-
-$connection = mysqli_connect(DBHOST,DBUSER,DBPASS,DBNAME);
-if(mysqli_connect_errno()){
-    echo json_encode(['success' => false, 'message' => 'Errore di connessione al database']);
-    die(mysqli_connect_error());
-    exit();
-}
+require_once("dbaccess.php");
+$connection = getDbConnection();
 
 //facciamo il doppio controllo sugli input dell'utente, nel caso disabiliti javascript e riesca a mandare il form
 if(empty($_POST['stadio']) || empty($_POST['settore'] || empty($_POST['data'])) || !isset($_POST['visibilita']) || !isset($_POST['copertura']) || !isset($_POST['distanza_campo']) || !isset($_POST['accessibilita']) || !isset($_POST['gestione_ingressi'])){
@@ -24,7 +18,7 @@ if(empty($_POST['stadio']) || empty($_POST['settore'] || empty($_POST['data'])) 
 }
 
 //formato della tabella nel database:
-//Recensioni(IdRecensione,TimeStampRecensione,Username,Stadio,Settore,DataRecensione,$votoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione)
+//Recensioni(IdRecensione,TimeStampRecensione,Username,Stadio,Settore,DataRecensione,VotoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione)
 //recupero gli input dell'utente e i parametri facoltativi se mancano li metto a null
 $utente = $_SESSION["Username"];
 $stadio = $_POST['stadio'];
@@ -40,6 +34,14 @@ $votoRistorazione = isset($_POST['ristorazione']) ? intval($_POST['ristorazione'
 $descrizione = isset($_POST['descrizione']) ? trim($_POST['descrizione']): null;
 
 $data = $_POST['data'];
+//controllo di non inserire date future
+$oggi = date("Y-m-d");
+if ($data > $oggi) {
+     echo json_encode(['success' => false, 'message' => 'Non puoi recensire eventi futuri.']);
+     $connection->close();
+     exit();
+}
+
 $sql = "INSERT INTO Recensioni(Username,Stadio,Settore,DataRecensione,VotoVisibilita,Copertura,VotoDistanzaCampo,VotoAccessibilita,VotoParcheggio,VotoGestioneIngressi,VotoServiziIgenici,VotoRistorazione,Descrizione) 
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $connection->prepare($sql);

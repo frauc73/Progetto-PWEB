@@ -316,13 +316,12 @@
                             <p id="testo_valutazione_ristorazione" class="testo_valutazione"></p>
                         </div>
                     </div>
-                    
+                    <div>
+                        <h3>La tua esperienza dagli spalti</h3>
+                        <p>Raccontaci di più. Hai qualche consiglio che vuoi dare ai prossimi visitatori dello stadio? Vuoi aggiungere altre informazioni alla recensione?</p>
+                        <textarea name="descrizione" id="descrizione" required placeholder="Consiglio a chi dovesse frequentare lo stadio d'inverno di coprirsi bene la testa, sopratutto per i settori più in alto!"></textarea>
+                    </div>
                 </form>
-                <div>
-                    <h3>La tua esperienza dagli spalti</h3>
-                    <p>Raccontaci di più. Hai qualche consiglio che vuoi dare ai prossimi visitatori dello stadio? Vuoi aggiungere altre informazioni alla recensione?</p>
-                    <textarea name="descrizione" id="descrizione" required placeholder="Consiglio a chi dovesse frequentare lo stadio d'inverno di coprirsi bene la testa, sopratutto per i settori più in alto!"></textarea>
-                </div>
             </div>
             <div class="contenitore_bottoni_evento_recensione">
                 <button type="submit" id="bottone_submit" disabled>Salva recensione</button>
