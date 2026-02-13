@@ -92,6 +92,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Diario del tifoso-Registrazione</title>
+        <link rel="stylesheet" href="../css/shared.css">
         <link rel="stylesheet" href="../css/login.css">
         <link rel="icon" href="../src/images/logo_sito.png" type="image/ico">
         <script src="../js/registration.js"></script>

@@ -1,44 +1,71 @@
-body{
-    background-image: url('../src/images/sfondo_sito_icone_small.png');
-    font-family: Arial, Helvetica, sans-serif;
-}
+
 #form-container{
-    background-color: white;
-    border: 3px solid #1f8a4c;
+    background-color: var(--bg-overlay);
     border-radius: 2rem;
-    position: absolute;
     width: 40%;
     height: fit-content;
-    left: 30%;
-    top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #logo_sito{
     position: absolute;
-    left: 35%;
-    top: -35%;
-    width: 30%;
+    width: 10rem;
     background-color: white;
-    border: 3px solid #1f8a4c;
+    border: 3px solid var(--pitch-medium);
     border-radius: 20%;
 }
 form{
-    padding: 5%;
-    height: 40%;
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .campo{
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: center;
     margin: 5%;
 }
 h3{
     text-align: center;
-    color: #1f8a4c;
+    color: var(--pitch-medium);
 }
-table{
-    width: 60%;
-    margin-left: 20%;
+.campo > input,
+td > input{
+    height: 2rem;
+    border: 2px solid var(--pitch-medium);
+    text-align: center;
+    border-radius: 1rem;
 }
+label > img{
+    height: 4rem;
+    margin-right: 1rem;
+}
+#login,
+#registration{
+   font-size: large;
+}
+#form-container > p{
+    font-size: large;
+    text-align: center;
+}
+#form-container > p > a{
+    color: var(--pitch-medium);
+}
+#error-msg{
+    font-size: large;
+    color: red;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+/*spazio per gestire la tabella nella registrazione*/
 tbody{
     width: 80%;
 }
@@ -53,45 +80,4 @@ td{
 }
 td > input{
     width: 100%;
-}
-.campo > input,
-td > input{
-    height: 2rem;
-    border: 2px solid #1f8a4c;
-    text-align: center;
-}
-label > img{
-    height: 4rem;
-    margin-right: 1rem;
-}
-#login,
-#registration{
-   width: 30%;
-   height: 2rem;
-   margin-left: 35%;
-   background-color: #1f8a4c;
-   color: white;
-   font-size: large;
-   font-weight: bold;
-   border: 2px solid #1f8a4c;
-}
-#form-container > p{
-    font-size: large;
-    text-align: center;
-}
-#form-container > p > a{
-    color: #1f8a4c;
-}
-#error-msg{
-    margin-left: 10%;
-    font-size: large;
-    color: red;
-}
-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
 }
