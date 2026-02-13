@@ -337,11 +337,10 @@ function aggiungiBottoneElimina(contenitore, tipo, id){
     bottoneElimina.classList.add("bottone_elimina");
     bottoneElimina.addEventListener("click", ()=>{
         const dati = new FormData;
-        dati.append("azione", "elimina_post");
         dati.append("tipo", tipo);
         dati.append("id_post", id);
 
-        fetch("modificaCampiProfilo.php", {method : 'POST', body: dati})
+        fetch("eliminaPost.php", {method : 'POST', body: dati})
             .then(res=> res.json())
             .then(data =>{
                 //dopo aver eseguito la query di eliminazione aggiorno la pagina

@@ -83,7 +83,10 @@
         } else {
             die(mysqli_connect_error());
         }
-    }  
+    }  else {
+        header("Location: login.php");
+        exit;
+    }
 ?>
 <!DOCTYPE html>
 <html lang="it">
