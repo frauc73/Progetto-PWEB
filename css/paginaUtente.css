@@ -31,8 +31,7 @@ body{
 }
 
 #contenitore_azioni_utente{
-    display: flex;
-    justify-content: end;
+    margin-top: 1rem;
 }
 
 /*
@@ -53,6 +52,8 @@ body{
 }
 .sidebar h2{
     color: white;
+    margin: 0;
+    margin-top: 1rem;
 }
 .sidebar p{
     font-size: 1.5rem;
@@ -91,6 +92,9 @@ body{
     align-items: center;
     justify-content: space-between;
 }
+.statistica p{
+    color: black;
+}
 #contenitore_squadra_supportata{
     display: flex;
     flex-direction: column;
@@ -106,6 +110,9 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+#contenuto_dialog h2{
+    color: var(--pitch-medium);
 }
 #contenuto_dialog select{
     text-align: center;
@@ -128,4 +135,23 @@ body{
 #select_foto_profilo{
     margin-bottom: 1rem;
     font-size: large;
+}
+.bottone_pagina_utente{
+    padding: 0.5rem;
+    background-color: var(--bg-overlay);
+    color: var(--pitch-medium);
+    border-radius: 1rem;
+    border: none;
+    position: relative;
+    left: 75%;
+}
+
+.bottone_pagina_utente:hover{
+    background-color: rgba(240, 240, 240, 0.95); 
+    border-radius: 1rem;
+    border-color: #ccc;
+}
+
+#modifica_foto_profilo{
+    left: 150%;
 }
