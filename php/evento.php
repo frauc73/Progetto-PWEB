@@ -37,7 +37,7 @@
             <td>
               <div class="squadra">
                 <p class="testo_centrale">Squadra di casa</p>
-                <img id="logo_casa" class="logo hidden" alt="Logo della squadra di casa">
+                <img id="logo_casa" class="logo hidden" src="../src/posts/Default.png" alt="Logo della squadra di casa">
                 <select id="squadra_casa" name="squadra_casa" required>
                   <option value="">-- Seleziona una squadra --</option>
                 </select>
@@ -52,7 +52,7 @@
             <td>
               <div class="squadra">
                 <p class="testo_centrale">Squadra ospite</p>
-                <img id="logo_ospite" class="logo hidden" alt="Logo della squadra ospite">
+                <img id="logo_ospite" class="logo hidden" src="../src/posts/Default.png" alt="Logo della squadra ospite">
                 <select id="squadra_ospite" name="squadra_ospite" required>
                   <option value="">-- Seleziona una squadra --</option>
                 </select>

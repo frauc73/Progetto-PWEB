@@ -90,7 +90,7 @@ if(isset($_POST['login']) && isset($_POST['username']) && isset($_POST['password
                     if($errore_formato)
                         echo '<p id="error-msg">Formato non corretto.</p>';
                 ?>
-                <button type="submit" id="login" name="login">Login</button>
+                <button type="submit" id="login" name="login" disabled>Login</button>
             </form>
             <p>Non hai un account? <a href="registration.php">Registrati</a></p>
         </div>

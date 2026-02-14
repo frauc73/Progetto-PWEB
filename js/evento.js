@@ -181,7 +181,7 @@ function aggiornaBottone(){
   const data = document.getElementById("data_partita");
   const dataSelezionata = new Date(data.value);
   const today = new Date();
-  today.setHours(0,0,0,0);
+  today.setHours(23, 59, 59, 999);
   const caption = document.getElementById("caption");
   const submitButton = document.getElementById("submit_button");
   //attivo il bottone solo se alcune condizioni sono valide
@@ -191,9 +191,9 @@ function aggiornaBottone(){
     && punteggioCasa.validity.valid && punteggioCasa.value >= 0 
     && punteggioOspite.validity.valid &&punteggioOspite.value >= 0 
     && data.validity.valid && dataSelezionata <= today){
-    submitButton.removeAttribute("disabled");
+    submitButton.disabled = false;
   } else {
-    submitButton.setAttribute("disabled", "true");
+    submitButton.disabled = true;
   }
 }
 

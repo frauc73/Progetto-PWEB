@@ -55,6 +55,7 @@ function eseguiRicerca(stringa){
                 contenitoreRisulato.appendChild(anchor);
 
                 const iconaElemento = document.createElement("img");
+                iconaElemento.alt = "Icona dell'elemento"
                 iconaElemento.classList.add("icona_elemento")
                 if(elem.type === "stadio")
                     iconaElemento.src = "./src/icons/iconaStadio.png";
@@ -145,8 +146,11 @@ function gestioneTendinaRicerca(){
         const isClickInside = tendinaRicerca.contains(e.target);
         const isClickOnButton = bottoneCerca.contains(e.target);
 
-        // Se il click NON è dentro la tendina E NON è sul bottone, chiudi
+        // Se il click NON è dentro la tendina E NON è sul bottone, chiudi e svuota il contenuto della ricerca
         if (!isClickInside && !isClickOnButton && !tendinaRicerca.classList.contains("hidden")) {
+            barraRicerca.value = "";
+            const contenitoreRicerca = document.getElementById("contenitore_ricerca");
+            contenitoreRicerca.innerHTML = "";
             tendinaRicerca.classList.add("hidden");
         }
     });

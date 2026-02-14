@@ -90,7 +90,7 @@ function aggiornaPagina(){
     const data = document.getElementById("data");
     const dataSelezionata = new Date(data.value);
     const today = new Date();
-    today.setHours(0,0,0,0);
+    today.setHours(23, 59, 59, 999);
     if(paese.validity.valid && stadio.validity.valid && settore.validity.valid && data.validity.valid && dataSelezionata <= today){
         //ci sono tutte le condizioni per mostrare lo spazio per lasciare la recensione
         contenitoreRecensione.classList.remove("hidden");
@@ -101,10 +101,10 @@ function aggiornaPagina(){
         const votoAccessibilita = document.querySelector('input[name="accessibilita"]:checked');
         const votoGestioneIngressi = document.querySelector('input[name="gestione_ingressi"]:checked');
         if( votoVisibilita && votoCopertura && votoDistanzaCampo && votoAccessibilita && votoGestioneIngressi)
-            bottoneSubmit.removeAttribute("disabled");
+            bottoneSubmit.disabled = false;
     } else {
         contenitoreRecensione.classList.add("hidden");
-        bottoneSubmit.setAttribute("disabled","true");
+        bottoneSubmit.disabled = true;
     }
 }
 

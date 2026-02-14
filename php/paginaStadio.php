@@ -43,7 +43,7 @@
                 </div>
             </aside>
             <section class="bacheca">
-                <h1>Recensioni</h1>
+                <h2>Recensioni</h2>
                 <div id="contenitore_filtro_recensione" class="contenitore_filtro_recensione">
                     <div class="filtro_recensione">
                         <input type="radio" id="filtro_tutti" name="filtro_recensione" value="tutti" checked>

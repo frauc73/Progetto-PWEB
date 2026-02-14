@@ -9,8 +9,9 @@ body{
     overflow: hidden;
     margin: 0;
 }
-/*MODIFICHE DA VALUTARE*/
-/* Foto profilo con bordo "Social" */
+.high_right{
+    right: 1rem;
+}
 #contenitore_foto_profilo {
     height: auto;
     padding: 20px 0;
@@ -24,29 +25,16 @@ body{
     background-color: white;
     width: 200px;
     height: 200px;
-    object-fit: cover; /* Evita che la foto si schiacci */
+    object-fit: cover; 
     border-radius: 50%;
-    border: 4px solid var(--pitch-medium); /* Bordo verde */
-    box-shadow: 0 0 15px rgba(31, 138, 76, 0.5); /* Alone luminoso */
+    border: 4px solid var(--pitch-medium);
+    box-shadow: 0 0 15px rgba(31, 138, 76, 0.5); 
 }
 
 #contenitore_azioni_utente{
     margin-top: 1rem;
 }
 
-/*
-#contenitore_foto_profilo{
-    height: 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-#foto_profilo{
-    max-width: 300px;
-    background-color: white;
-    border-radius: 2rem;
-}*/
 .sidebar{
     background: rgba(0, 0, 0, 0.4);
 }
@@ -154,4 +142,10 @@ body{
 
 #modifica_foto_profilo{
     left: 150%;
+}
+
+.usernameUtente{
+    text-align: center;
+    font-size: 36px;
+    color: white;
 }

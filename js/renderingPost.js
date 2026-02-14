@@ -111,6 +111,7 @@ function disegnaEvento(post, isOwner, mostraUtente = false, usernameUtente = "" 
         contenitoreFotoRicordo.appendChild(h3FotoRicordo);
 
         const fotoRicordo = document.createElement("img");
+        fotoRicordo.alt = "Foto ricordo dell'evento";
         if(homepage)
             fotoRicordo.src = "./" + post.PathFotoRicordo;
         else
@@ -313,6 +314,7 @@ function disegnaVoto(classe, voto, homepage){
         for(let i = 0; i < voto; i++){
             //dobbiamo disegnare n icone del pallone, dove n = voto
             const icona = document.createElement("img");
+            icona.alt = "icona pallone";
             if(homepage)
                 icona.src = "./src/icons/icons8-calcio-2-30.png";
             else
@@ -370,6 +372,7 @@ function aggiungiDettagliUtente(contenitore, usernameUtente, fotoUtente, homepag
     contenitoreDettagliUtente.appendChild(ancoraUtente); 
 
     const immagineUtente = document.createElement("img");
+    immagineUtente.alt = "Foto profilo dell'utente"
     immagineUtente.classList.add("immagine_utente");
     if(homepage)
         immagineUtente.src = fotoUtente.replace("../", "./");

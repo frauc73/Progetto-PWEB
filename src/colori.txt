@@ -201,3 +201,13 @@ Vanno controllati gli ultimi meccanismi, poi ritoccare le ultime cose sullo stil
 Modifica la situazione in cui vado sul filtro (esempio Recensioni) e l'utente non ha cose del filtro (Compare un div bianco, va cacciato)
 Poi passo le varie pagine ai validatori
 Dopo si può provare il sito sulla macchina virtuale
+
+Tutti i file CSS hanno superato la validazione.
+Login validato
+Registrazione validato
+Homepage validato
+Evento validato
+Recensione validato
+PaginaUtente validato
+Dialog PaginaUtente validato
+PaginaStadio validato

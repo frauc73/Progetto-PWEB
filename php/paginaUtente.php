@@ -115,9 +115,7 @@
                     </a>
                 <?php else: ?>
                     <a href="../index.php">
-                        <button>
-                            <img src = "../src/icons/icons8-home-page-64.png" alt="Icona Home" class="logo_back_home">
-                        </button>
+                        <img src = "../src/icons/icons8-home-page-64.png" alt="Icona Home" class="logo_back_home">
                     </a>
                 <?php endif; ?>
             </div>

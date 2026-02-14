@@ -1,4 +1,4 @@
-/*MODIFICHE DA VALUTARE*/
+/*sezione font*/
 @font-face {
     font-family: 'DiarioFont';
     src: url('../src/fonts/teko/Teko-Light.ttf') format('truetype');
@@ -31,18 +31,16 @@
 }
 
 :root {
-    /* Verdi ispirati al campo da gioco */
-    --pitch-dark: #0e3c26;  /* Verde scuro per header/footer */
-    --pitch-medium: #1f8a4c; /* Il tuo verde attuale per i bottoni */
-    --pitch-light: #2ecc71;  /* Verde acceso per accenti/hover */
-    
-    /* Colori funzionali */
+    /*variabili per i colori*/
+    --pitch-dark: #0e3c26;  
+    --pitch-medium: #1f8a4c; 
+    --pitch-light: #2ecc71;  
     --text-main: #333333;
     --text-white: #ffffff;
-    --bg-overlay: rgba(255, 255, 255, 0.95); /* Effetto vetro */
+    --bg-overlay: rgba(255, 255, 255, 0.95); 
     --shadow-soft: 0 8px 30px rgba(0,0,0,0.12);
     
-    /* Font Stack moderno*/
+    /* Font Stack con il font che ho scelto*/
     --font-stack: 'DiarioFont','Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -74,7 +72,7 @@ body{
 #container{
     width: 80%;
     height: fit-content;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--bg-overlay);
     border-radius: 2rem;
     margin-top: 10%;
     margin-bottom: 10%;
@@ -92,13 +90,13 @@ textarea{
 select:focus, 
 textarea:focus{
     outline: none;
-    border-color: #1f8a4c;
+    border-color: var(--pitch-medium);
     box-shadow: 0 0 5px rgba(31, 138, 76, 0.3);
 }
 button[type="submit"],
 .bottone_dialog,
 #back_home{
-    background-color: #1f8a4c;
+    background-color: var(--pitch-medium);
     color: white;
     font-size: 1rem;
     font-weight: bold;
@@ -124,7 +122,7 @@ button[type="submit"]:disabled,
     cursor: not-allowed;
 }
 .bordered{
-    border: 3px solid #1f8a4c;
+    border: 3px solid var(--pitch-medium);
 }
 footer{
     position: fixed;
@@ -148,6 +146,7 @@ footer{
     position: sticky;
     top: 0;
     width: 100%;
+    z-index: 2000;
 }
 .header_sito h1 {
     color: white;

@@ -133,7 +133,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
                             echo '<p id="error-msg">Hai scelto un mail che appartiene già a qualcuno.</p>';
                     ?>
                 </table>
-                <button type="submit" id="registration" name="registration">Registrati</button>
+                <button type="submit" id="registration" name="registration" disabled>Registrati</button>
             </form>
             <p>Hai un account? <a href="login.php">Accedi</a></p>
         </div>
