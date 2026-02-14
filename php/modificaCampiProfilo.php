@@ -90,6 +90,8 @@ if($azione == "foto_profilo"){
             if($stmtFotoProfilo = $connection->prepare($salvaFotoProfilo)){
                 $stmtFotoProfilo->bind_param("ss", $pathFotoDB, $utente);
                 if($stmtFotoProfilo->execute()){
+                    //aggiorniamo anche la variabile di sessione
+                    $_SESSION['PathFotoProfiloUtente'] = $pathFotoDB; 
                     echo json_encode(['success' => true, 'message' => 'Foto profilo aggiornata correttamente!']);
                 } else {
                     echo json_encode(['success' => false, 'message' => 'Errore nell\'esecuzione della query.']);
