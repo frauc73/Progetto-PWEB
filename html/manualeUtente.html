@@ -2,6 +2,138 @@
 <html lang="it">
     <head></head>
     <body>
-        <h1>Manuale Utente del progetto Diario del Tifoso.</h1>
+        <h1>Manuale Utente del progetto Diario del Tifoso</h1>
+
+        <h2>Login e registrazione</h2>
+        <p>Per accedere al sito &egrave; necessario effettuare il login tramite la <a href="../php/login.php">pagina di login</a>. 
+            Inserendo Username e Password si attiva il pulsante che permette di fare il login.</p>
+        <p>Se non si ha un account, lo si pu&ograve; creare tramite la <a href="../php/registration.php">pagina di registrazione</a>. 
+            Per registrarsi &egrave; necessario inserire:
+            <ul>
+                <li>Nome</li>
+                <li>Congome</li>
+                <li>Email</li>
+                <li>Username, da 3 a 16 caratteri, solo lettere numeri e underscore</li>
+                <li>Password, minimo 4 caratteri, ammessi lettere, numeri e i simboli _$!%@</li>
+            </ul>
+            Successivamente, se tutti i formati sono rispettati, si attiva il pulsante di registrazione.
+        </p>
+
+        <h2>Navigazione della homepage</h2>
+        <p>Dopo aver effettuato il login si accede alla homepage del sito, attraverso cui si possono osservare i post degli utenti seguiti.</p>
+        <p>Le interazioni possibili con il singolo post sono le seguenti:
+            <ul>
+                <li>Visitare la <a href="#VisitaPaginaUtente">pagina dell'utente</a> che ha inserito il post.</li>
+                <li>Visitare la <a href="#VisitaPaginaStadio">pagina dello stadio</a>  a cui fa riferimento il post.</li>
+            </ul>
+        </p>
+        <p>Dalla homepage &egrave; possibile anche:
+            <ul>
+                <li><a href="#Cercare">Cercare utenti o stadi</a></li>
+                <li>Aprire il menu a tendina, cliccando sull'icona sulla sinistra, da cui si pu&ograve;:
+                    <ul>
+                        <li><a href="#CreazioneEvento">Creare un evento</a></li>
+                        <li><a href="#CreazioneRecensione">Creare una Recensione</a></li>
+                        <li><a href="#AccessoProfiloPersonale">Accedere al proprio profilo</a></li>
+                        <li>Fare il logout</li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+        <p>Un altro modo per accedere alla propria pagina &egrave; cliccare sulla propria foto profilo, in alto a destra.</p>
+        <h3 id="Cercare">Ricerca di utenti e stadi</h3>
+        <p>Cliccando sull'icona della lente d'ingrandimento si apre una sezione per la ricerca, dentro la quale &egrave; presente una barra di ricerca.</p>
+        <p>Dopo aver inserito la stringa che vuole cercare, all'utente vengono mostrati i risultati che pi&ugrave; corrispondono alla ricerca. 
+            Il men&ugrave; &egrave; scorribile, quindi l'utente pu&ograve; scorrere la lista di risultati e cliccando su un risultato viene portato sulla relativa pagina. </p>
+
+        <h2 id="VisitaPaginaUtente">Visita della pagina di un utente</h2>
+        <p>La pagina di un utente si divide in due macro-sezioni:
+            <ul>
+                <li>
+                    <h3>La bacheca</h3>
+                    <p>All'interno della bacheca &egrave; possibile vedere i post dell'utente. &Egrave; possibile anche filtrare i post usando il filtro presente all'inizio della bacheca.</p>
+                </li>
+                <li>
+                    <h3>Le sidebar</h3>
+                    <p>Dentro le sidebar sono presenti le informazioni relative all'utente.</p>
+                    <p>Dentro la sidebar sinstra &egrave; presente un pulsante per seguire il profilo dell'utente, se non lo si segue, o smetterlo di seguire, se lo si segue gi&agrave;. 
+                        In ogni caso l'utente ricever&agrave; una notifica.</p>
+                </li>
+            </ul>
+        </p>
+        <h3 id="AccessoProfiloPersonale">Visita del proprio profilo</h3>
+        <p>Se la pagina a cui si accede &egrave; la propria allora &egrave; possibile anche:
+            <ul>
+                <li>Modificare il proprio profilo con gli appositi bottoni, in particolare:
+                    <ul>
+                        <li>Modificare la foto profilo.</li>
+                        <li>Modificare la descrizione del profilo.</li>
+                        <li>Modificare la squadra supportata.</li>
+                    </ul>
+                </li>
+                <li>Eliminare i post, attraverso il bottone rosso con l'icona del cestino.</li>
+            </ul>
+        </p>
+
+        <h2 id="VisitaPaginaStadio">Visita della pagina di uno stadio</h2>
+        <p>La pagina in questione contiene le recensioni sullo stadio di cui si sta visitando la pagina. In particolare:
+            <ul>
+                <li>La sidebar sinistra contiene le statistiche sui parametri dello stadio che si possono recensire.</li>
+                <li>La bacheca contiene le recensioni dello stadio. 
+                    L'utente pu&ograve; filtrare le recensioni in base al settore dello stadio a cui &egrave; interessato, tramite il filtro. 
+                    Aggiornare il filtro comporta anche l'aggiornamento delle statistiche.</li>
+            </ul>
+        </p>
+
+        <h2 id="CreazioneEvento">Creare un evento</h2>
+        <p>Per creare un evento &egrave; necessario seguire i seguenti passaggi:
+            <ol>
+                <li>
+                    <h3>Inserire la partita</h3>
+                    <p>Selezionare la Nazione dove si &egrave; disputata la partita. 
+                        Successivamente viene mostrato all'utente una sezione dove si possono selezionare le squadre che hanno disputato la partita e il punteggio della stessa.</p>
+                </li>
+                <li>
+                    <h3>Inserire la data della partita</h3>
+                    <p>Attraverso l'apposito spazio si pu&ograve; selezionare una data, che logicamente non deve appartenere al futuro.</p>
+                </li>
+                <li>
+                    <h3>Inserire una foto ricordo</h3>
+                    <p>Questo passaggio &egrave; facoltativo e da la possibilit&agrave; di salvare anche una foto ricordo, del formato richiesto.</p>
+                </li>
+                <li>
+                    <h3>Inserire una pensiero</h3>
+                    <p>L'utente deve scrivere un pensiero personale legato all'evento.</p>
+                </li>
+                <li>
+                    <h3>Salvare l'evento</h3>
+                    <p>Per salvare l'evento sul proprio profilo &egrave; necessario cliccare sul bottone "Salva evento".</p>
+                </li>
+            </ol>
+        </p>
+        <p>&Egrave; possibile anche ritornare alla home page con il pulsante "Torna alla home".</p>
+
+        <h2 id="CreazioneRecensione">Creare una recensione</h2>
+        <p>Per creare una recensione &egrave; necessario seguire i seguenti passaggi:
+            <ol>
+                <li>
+                    <h3>Inserire lo stadio</h3>
+                    <p>L'utente deve scegliere la Nazione, lo stadio e il settore che vuole recensire.</p>
+                </li>
+                <li>
+                    <h3>Inserire la data della partita</h3>
+                    <p>Attraverso l'apposito spazio si pu&ograve; selezionare una data, che logicamente non deve appartenere al futuro.</p>
+                </li>
+                <li>
+                    <h3>Compilare la recensione</h3>
+                    <p>L'utente deve selezionare la valutazione per ogni campo della recensione. Ogni parametro &egrave; spiegato attraverso una piccola descrizione. </p>
+                </li>
+                <li>
+                    <h3>Salvare la recensione</h3>
+                    <p>Per salvare la recensione sul proprio profilo &egrave; necessario cliccare sul bottone "Salva recensione".</p>
+                </li>
+            </ol>
+        </p>
+        <p>&Egrave; possibile anche ritornare alla home page con il pulsante "Torna alla home".</p>
     </body>
 </html>
