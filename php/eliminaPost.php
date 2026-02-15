@@ -27,13 +27,37 @@ if(($tipoPost !== "evento" && $tipoPost !== "recensione") || !isset($idPost)){
     die(mysqli_connect_error());
     exit();
 }
+
+$idPostIntero = intval($idPost);
+
+if ($tipoPost === "evento") {
+    $querySelectImg = "SELECT PathFotoRicordo FROM Eventi WHERE User = ? AND IdPost = ?";
+    
+    if ($stmtSelect = $connection->prepare($querySelectImg)) {
+        $stmtSelect->bind_param("si", $utente, $idPostIntero);
+        if ($stmtSelect->execute()){
+            $result = $stmtSelect->get_result();
+            if ($row = $result->fetch_assoc()) {
+                $valoreDB = $row['PathFotoRicordo'];
+                $nomeFile = "../".$valoreDB;
+                if (!empty($nomeFile) && $nomeFile !== "../src/posts/Default.png") {
+                    // Se il file esiste fisicamente, lo cancelliamo
+                    if (file_exists($nomeFile)) {
+                        unlink($nomeFile); 
+                    }
+                }
+            }
+        }
+        $stmtSelect->close();
+    }
+}
+
 if($tipoPost === "evento"){
     $queryEliminaPost = "DELETE FROM Eventi WHERE User = ? AND IdPost = ?";
 } else {
     $queryEliminaPost = "DELETE FROM Recensioni WHERE Username = ? AND IdRecensione = ?";
 }
 if($stmtEliminaPost = $connection->prepare($queryEliminaPost)){
-    $idPostIntero = intval($idPost);
     $stmtEliminaPost->bind_param("si", $utente, $idPostIntero);
     if($stmtEliminaPost->execute()){
         if($stmtEliminaPost->affected_rows > 0){

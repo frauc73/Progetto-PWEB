@@ -39,7 +39,7 @@ CREATE TABLE `Eventi` (
   `PathFotoRicordo` varchar(50) DEFAULT NULL,
   `DescrizionePost` text NOT NULL,
   PRIMARY KEY (`IdPost`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `Eventi` (
 
 LOCK TABLES `Eventi` WRITE;
 /*!40000 ALTER TABLE `Eventi` DISABLE KEYS */;
-INSERT INTO `Eventi` VALUES (3,'2026-01-13 10:32:33','FraUC73','Inter Milan',2,'SSC Napoli',2,'San Siro','2026-01-11','src/posts/post_69661f41d21cb.jpg','Flower of Naples!'),(5,'2026-01-21 23:10:04','alethesir','AS Roma',1,'Hellas Verona',3,'Stadio Olimpico','2024-03-09','src/posts/post_69715ccc64f4f.jpg','Partita ottima per il divertimento, meno per il risultato. Un complimento speciale a Dybala, 8 milioni a stagione, praticamente 1 milione a partita. Io mi spacco la schiena in fabbrica 8 ore e sti pupazzi stanno sempre a terra. Ultima partita della Roma che vedrò in vita mia!'),(6,'2026-01-22 10:16:23','FraUC73','West Ham United',2,'AFC Bournemouth',2,'London Stadium','2025-04-05','src/posts/post_6971f8f716e75.jpeg','Esperienza unica! Ho trascorso una giornata indimenticabile con una persona speciale. West Ham are massive, everywhere we go!'),(7,'2026-01-23 22:29:44','Gameover','AC Milan',0,'Juventus FC',1,'San Siro','2016-05-21',NULL,'Partita alquanto deludente, ma bellissima esperienza.'),(10,'2026-02-08 11:14:51','MR_26','Real Madrid',3,'Athletic Bilbao',1,'Estadio Santiago Bernabéu','2025-11-09','src/posts/post_6988702b69428.jpg','Prima volta al Bernabeu, indimenticabile!'),(11,'2026-02-12 17:37:28','AntonioP','Pisa Sporting Club',0,'Atalanta BC',3,'Arena Garibaldi – Stadio Romeo Anconetani','2026-02-08',NULL,'ciaone'),(14,'2026-02-13 17:40:54','FraUC73','SSC Napoli',3,'Juventus FC',3,'Stadio Diego Armando Maradona','2011-11-29','src/posts/post_698f61c53bea2.jpg','La mia prima partita allo stadio?'),(15,'2026-02-14 16:27:55','Tita64','Como 1907',1,'AC Milan',2,'Stadio Giuseppe Sinigaglia','2026-02-07',NULL,'Prova inserimento evento'),(16,'2026-02-14 16:32:33','Tita64','Como 1907',1,'ACF Fiorentina',2,'Stadio Giuseppe Sinigaglia','2026-02-14',NULL,'Prova input'),(17,'2026-02-14 17:58:18','Prattikiller','ACF Fiorentina',2,'AC Milan',1,'Stadio Artemio Franchi','2023-03-04',NULL,'Partita da parte della Viola bella ed emozionante, dovuto anche alla ricorrenza della perdita del nostro grande capitano Francesco, abbiamo vinto anche per te !!');
+INSERT INTO `Eventi` VALUES (3,'2026-01-13 10:32:33','FraUC73','Inter Milan',2,'SSC Napoli',2,'San Siro','2026-01-11','src/posts/post_69661f41d21cb.jpg','Flower of Naples!'),(5,'2026-01-21 23:10:04','alethesir','AS Roma',1,'Hellas Verona',3,'Stadio Olimpico','2024-03-09','src/posts/post_69715ccc64f4f.jpg','Partita ottima per il divertimento, meno per il risultato. Un complimento speciale a Dybala, 8 milioni a stagione, praticamente 1 milione a partita. Io mi spacco la schiena in fabbrica 8 ore e sti pupazzi stanno sempre a terra. Ultima partita della Roma che vedrò in vita mia!'),(6,'2026-01-22 10:16:23','FraUC73','West Ham United',2,'AFC Bournemouth',2,'London Stadium','2025-04-05','src/posts/post_6971f8f716e75.jpeg','Esperienza unica! Ho trascorso una giornata indimenticabile con una persona speciale. West Ham are massive, everywhere we go!'),(7,'2026-01-23 22:29:44','Gameover','AC Milan',0,'Juventus FC',1,'San Siro','2016-05-21',NULL,'Partita alquanto deludente, ma bellissima esperienza.'),(11,'2026-02-12 17:37:28','AntonioP','Pisa Sporting Club',0,'Atalanta BC',3,'Arena Garibaldi – Stadio Romeo Anconetani','2026-02-08',NULL,'ciaone'),(14,'2026-02-13 17:40:54','FraUC73','SSC Napoli',3,'Juventus FC',3,'Stadio Diego Armando Maradona','2011-11-29','src/posts/post_698f61c53bea2.jpg','La mia prima partita allo stadio?'),(15,'2026-02-14 16:27:55','Tita64','Como 1907',1,'AC Milan',2,'Stadio Giuseppe Sinigaglia','2026-02-07',NULL,'Prova inserimento evento'),(16,'2026-02-14 16:32:33','Tita64','Como 1907',1,'ACF Fiorentina',2,'Stadio Giuseppe Sinigaglia','2026-02-14',NULL,'Prova input'),(17,'2026-02-14 17:58:18','Prattikiller','ACF Fiorentina',2,'AC Milan',1,'Stadio Artemio Franchi','2023-03-04',NULL,'Partita da parte della Viola bella ed emozionante, dovuto anche alla ricorrenza della perdita del nostro grande capitano Francesco, abbiamo vinto anche per te !!');
 /*!40000 ALTER TABLE `Eventi` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,4 +238,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-02-15  0:57:38
+-- Dump completed on 2026-02-15 18:35:10
