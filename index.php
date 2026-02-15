@@ -72,7 +72,7 @@
 						<a href="./php/logout.php" id="ancora_logout">
 							<h2>Logout</h2>
 						</a>
-
+						<a href="./html/manualeUtente.html" id="manuale_utente"> Manuale Utente</a>
 					</div>
 			</aside>
 			<section class="bacheca">

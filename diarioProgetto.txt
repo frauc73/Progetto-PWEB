@@ -211,3 +211,5 @@ Recensione validato
 PaginaUtente validato
 Dialog PaginaUtente validato
 PaginaStadio validato
+
+Ho scritto anche il manuale.
